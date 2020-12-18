@@ -1,0 +1,16 @@
+{{ ansible_managed|comment }}
+
+[Unit]
+Description=Jira {{ jira__product|upper }}
+After=network.target
+
+[Service]
+Type=forking
+User={{ jira__username }}
+Environment="JAVA_OPTS=-Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
+PIDFile={{ jira__install_path }}/work/catalina.pid
+ExecStart={{ jira__install_path }}/bin/start-jira.sh
+ExecStop={{ jira__install_path }}/bin/stop-jira.sh
+
+[Install]
+WantedBy=multi-user.target

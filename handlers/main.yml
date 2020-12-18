@@ -1,0 +1,10 @@
+---
+# handlers file for jira
+
+- name: 'Reload systemctl'
+  command: systemctl daemon-reload
+
+- name: 'Restart Jira'
+  service:
+    name: jira
+    state: restarted

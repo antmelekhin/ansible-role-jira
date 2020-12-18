@@ -1,0 +1,15 @@
+---
+# tasks file for jira
+
+- name: 'Include tasks for preparing to install Jira'
+  include_tasks: 'pre-install.yml'
+
+- name: 'Include tasks for Installing Jira'
+  include_tasks: 'install.yml'
+
+- name: 'Include tasks for Configure Jira'
+  include_tasks: 'configure.yml'
+
+- name: 'Include tasks for connecting Jira to database'
+  include_tasks: 'db.yml'
+  when: jira__db_configuration|bool

@@ -1,0 +1,29 @@
+---
+
+- name: 'Install fontconfig'
+  package:
+    name: fontconfig
+    state: present
+
+- name: 'Create Jira group'
+  group:
+    name: '{{ jira__group }}'
+
+- name: 'Create Jira user'
+  user:
+    name: '{{ jira__username }}'
+    group: '{{ jira__group }}'
+    comment: 'Atlassian JIRA'
+    shell: /bin/bash
+    local: true
+  register: jira__user_result
+
+- name: 'Create Jira directories'
+  file:
+    path: '{{ item }}'
+    owner: '{{ jira__username }}'
+    group: '{{ jira__group }}'
+    state: directory
+  with_items:
+    - '{{ jira__install_path }}'
+    - '{{ jira__home_path }}'

@@ -1,0 +1,20 @@
+---
+
+- name: 'Download Jira archive'
+  get_url:
+    url: '{{ jira__archive_url }}'
+    dest: '{{ jira__user_result.home }}/{{ jira__archive_url|basename }}'
+    owner: '{{ jira__username }}'
+    group: '{{ jira__group }}'
+    mode: 0644
+  register: jira__archive_result
+
+- name: 'Extract Jira archive'
+  unarchive:
+    src: '{{ jira__archive_result.dest }}'
+    dest: '{{ jira__install_path }}'
+    extra_opts: [ --strip-components=1 ]
+    remote_src: true
+    owner: '{{ jira__username }}'
+    group: '{{ jira__group }}'
+  when: jira__archive_result.changed

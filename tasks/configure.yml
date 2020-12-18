@@ -1,0 +1,28 @@
+---
+
+- name: 'Create Jira unit for SystemD'
+  template:
+    src: jira.service.j2
+    dest: /etc/systemd/system/jira.service
+    owner: '{{ jira__username }}'
+    group: '{{ jira__group }}'
+    mode: 0644
+  notify: Reload systemctl
+
+- name: 'Start Jira'
+  service:
+    name: jira
+    enabled: true
+    state: started
+
+- name: 'Configure Jira'
+  template:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: '{{ jira__username }}'
+    group: '{{ jira__group }}'
+    mode: 0644
+  with_items:
+    - { src: 'server.xml.j2', dest: '{{ jira__install_path }}/conf/server.xml' }
+    - { src: 'jira-application.properties.j2', dest: '{{ jira__install_path }}/atlassian-jira/WEB-INF/classes/jira-application.properties' }
+  notify: Restart Jira

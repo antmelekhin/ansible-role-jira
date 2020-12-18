@@ -1,0 +1,10 @@
+---
+
+- name: 'Configure Jira database connection'
+  template:
+    src: 'dbconfig.xml.j2'
+    dest: '{{ jira__home_path }}/dbconfig.xml'
+    owner: '{{ jira__username }}'
+    group: '{{ jira__group }}'
+    mode: 0600
+  notify: Restart Jira

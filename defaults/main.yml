@@ -1,0 +1,23 @@
+---
+# defaults file for jira
+
+# Jira download link.
+jira__product: 'software'
+jira__version: '8.13.0'
+jira__archive_url: 'https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-{{ jira__product }}-{{ jira__version }}.tar.gz'
+
+# Jira user.
+jira__username: 'jira'
+jira__group: 'jira'
+
+# Jira directories.
+jira__install_path: '/opt/atlassian/jira'
+jira__home_path: '/var/atlassian/application-data/jira'
+
+# Jira database connection settings.
+jira__db_configuration: false
+
+# Jira proxy settings.
+jira__catalina_connector_proxyname: ''
+jira__catalina_connector_scheme: 'http'
+jira__catalina_connector_proxyport: '{{ (jira__catalina_connector_scheme|lower == "http")|ternary("80", "443") }}'
