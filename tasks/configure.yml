@@ -23,6 +23,8 @@
     group: '{{ jira__group }}'
     mode: 0644
   with_items:
-    - { src: 'server.xml.j2', dest: '{{ jira__install_path }}/conf/server.xml' }
-    - { src: 'jira-application.properties.j2', dest: '{{ jira__install_path }}/atlassian-jira/WEB-INF/classes/jira-application.properties' }
+    - src: 'server.xml.j2'
+      dest: '{{ jira__install_path }}/conf/server.xml'
+    - src: 'jira-application.properties.j2'
+      dest: '{{ jira__install_path }}/atlassian-jira/WEB-INF/classes/jira-application.properties'
   notify: Restart Jira
