@@ -15,7 +15,6 @@
     group: '{{ jira__group }}'
     comment: 'Atlassian JIRA'
     shell: /bin/bash
-    local: true
   register: jira__user_result
 
 - name: 'Create Jira directories'
@@ -24,6 +23,7 @@
     owner: '{{ jira__username }}'
     group: '{{ jira__group }}'
     state: directory
+    mode: 0755
   with_items:
     - '{{ jira__install_path }}'
     - '{{ jira__home_path }}'
