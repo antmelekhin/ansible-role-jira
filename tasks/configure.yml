@@ -7,13 +7,7 @@
     owner: '{{ jira__username }}'
     group: '{{ jira__group }}'
     mode: 0644
-  notify: Reload systemctl
-
-- name: 'Start Jira'
-  service:
-    name: jira
-    enabled: true
-    state: started
+  notify: Restart Jira
 
 - name: 'Configure Jira'
   template:

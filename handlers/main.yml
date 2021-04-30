@@ -1,10 +1,9 @@
 ---
 # handlers file for jira
 
-- name: 'Reload systemctl'
-  command: systemctl daemon-reload
-
 - name: 'Restart Jira'
-  service:
+  systemd:
     name: jira
+    daemon_reload: true
     state: restarted
+    enabled: true
