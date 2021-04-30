@@ -1,0 +1,27 @@
+---
+
+dependency:
+  name: galaxy
+  enabled: true
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+platforms:
+  - name: centos-8
+    image: jrei/systemd-centos:8
+    exposed_ports:
+      - 8080/udp
+      - 8080/tcp
+    published_ports:
+      - 0.0.0.0:8080:8080/udp
+      - 0.0.0.0:8080:8080/tcp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    command: "/usr/sbin/init"
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

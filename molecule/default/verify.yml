@@ -1,0 +1,20 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: 'Verify'
+  hosts: all
+  gather_facts: false
+  tasks:
+
+  - name: 'Gathering Service Facts'
+    service_facts:
+
+  - name: 'Assert that jira service is enabled and running'
+    assert:
+      that:
+        - ansible_facts.services['jira.service'].state == 'running'
+        - ansible_facts.services['jira.service'].status == 'enabled'
+
+  - name: 'Check url'
+    uri:
+      url: 'http://{{ ansible_host }}:8080'

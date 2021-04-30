@@ -1,0 +1,7 @@
+---
+
+- name: Converge
+  hosts: all
+  roles:
+    - role: geerlingguy.java
+    - role: ansible-role-jira
