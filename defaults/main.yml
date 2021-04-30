@@ -14,6 +14,10 @@ jira__group: 'jira'
 jira__install_path: '/opt/atlassian/jira'
 jira__home_path: '/var/atlassian/application-data/jira'
 
+# Jira environment configuration.
+jira__jvm_minimum_memory: '384m'
+jira__jvm_maximum_memory: '2048m'
+
 # Jira database connection settings.
 jira__db_configuration: false
 

@@ -24,6 +24,8 @@ Ansible роль для установки и настройки Jira.
 - `jira__group` Unix группа пользователя (default: `jira`).
 - `jira__install_path` Каталог, в который будет установлено приложение (default: `/opt/atlassian/jira`).
 - `jira__home_path` Домашний каталог Jira (default: `/var/atlassian/application-data/jira`).
+- `jira__jvm_minimum_memory` Минимальный объем памяти, используемый JVM (default: `384m`).
+- `jira__jvm_maximum_memory` Максимальный объем памяти, используемый JVM (default: `2048m`).
 - `jira__db_configuration` Настройка подключения к БД (default: `false`).
 - `jira__db_address` IP адрес или DNS имя сервера БД.
 - `jira__db_port` Порт БД.
