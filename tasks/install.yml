@@ -3,7 +3,7 @@
 - name: 'Download Jira archive'
   get_url:
     url: '{{ jira__archive_url }}'
-    dest: '{{ jira__user_result.home }}/{{ jira__archive_url|basename }}'
+    dest: '{{ jira__user_result.home }}/{{ jira__archive_url | basename }}'
     owner: '{{ jira__username }}'
     group: '{{ jira__group }}'
     mode: 0644

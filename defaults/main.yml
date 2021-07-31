@@ -24,4 +24,4 @@ jira__db_configuration: false
 # Jira proxy settings.
 jira__catalina_connector_proxyname: ''
 jira__catalina_connector_scheme: 'http'
-jira__catalina_connector_proxyport: '{{ (jira__catalina_connector_scheme|lower == "http")|ternary("80", "443") }}'
+jira__catalina_connector_proxyport: '{{ (jira__catalina_connector_scheme | lower == "http") | ternary("80", "443") }}'
