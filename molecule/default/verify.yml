@@ -18,3 +18,11 @@
   - name: 'Check url'
     uri:
       url: 'http://{{ ansible_host }}:8080'
+
+  - name: 'Check version'
+    command: grep ^version /opt/atlassian/jira/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
+    register: jira__version
+
+  - name: 'Debug version'
+    debug:
+      var: jira__version.stdout_lines
