@@ -1,7 +1,7 @@
 ---
 
 - name: 'Create Jira unit for SystemD'
-  template:
+  ansible.builtin.template:
     src: jira.service.j2
     dest: /etc/systemd/system/jira.service
     owner: '{{ jira__username }}'
@@ -10,7 +10,7 @@
   notify: Restart Jira
 
 - name: 'Configure Jira'
-  template:
+  ansible.builtin.template:
     src: 'server.xml.j2'
     dest: '{{ jira__install_path }}/conf/server.xml'
     owner: '{{ jira__username }}'
@@ -19,7 +19,7 @@
   notify: Restart Jira
 
 - name: 'Configure Jira environment'
-  template:
+  ansible.builtin.template:
     src: 'setenv.sh.j2'
     dest: '{{ jira__install_path }}/bin/setenv.sh'
     owner: '{{ jira__username }}'

@@ -1,7 +1,7 @@
 ---
 
 - name: 'Download Jira archive'
-  get_url:
+  ansible.builtin.get_url:
     url: '{{ jira__archive_url }}'
     dest: '{{ jira__user_result.home }}/{{ jira__archive_url | basename }}'
     owner: '{{ jira__username }}'
@@ -10,7 +10,7 @@
   register: jira__archive_result
 
 - name: 'Extract Jira archive'
-  unarchive:
+  ansible.builtin.unarchive:
     src: '{{ jira__archive_result.dest }}'
     dest: '{{ jira__install_path }}'
     extra_opts:

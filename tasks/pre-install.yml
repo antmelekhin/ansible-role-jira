@@ -1,16 +1,16 @@
 ---
 
 - name: 'Install fontconfig'
-  package:
+  ansible.builtin.package:
     name: fontconfig
     state: present
 
 - name: 'Create Jira group'
-  group:
+  ansible.builtin.group:
     name: '{{ jira__group }}'
 
 - name: 'Create Jira user'
-  user:
+  ansible.builtin.user:
     name: '{{ jira__username }}'
     group: '{{ jira__group }}'
     comment: 'Atlassian JIRA'
@@ -18,7 +18,7 @@
   register: jira__user_result
 
 - name: 'Create Jira directories'
-  file:
+  ansible.builtin.file:
     path: '{{ item }}'
     owner: '{{ jira__username }}'
     group: '{{ jira__group }}'
