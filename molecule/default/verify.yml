@@ -7,22 +7,24 @@
   tasks:
 
   - name: 'Gathering Service Facts'
-    service_facts:
+    ansible.builtin.service_facts:
 
   - name: 'Assert that jira service is enabled and running'
-    assert:
+    ansible.builtin.assert:
       that:
         - ansible_facts.services['jira.service'].state == 'running'
         - ansible_facts.services['jira.service'].status == 'enabled'
 
   - name: 'Check url'
-    uri:
+    ansible.builtin.uri:
       url: 'http://{{ ansible_host }}:8080'
 
-  - name: 'Check version'
-    command: grep ^version /opt/atlassian/jira/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
-    register: jira__version
+  - name: 'Check current Jira version'
+    ansible.builtin.command:
+      cmd: grep -Po '(?<=^version=)\N*$' /opt/atlassian/jira/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
+    changed_when: false
+    register: jira__version_check
 
-  - name: 'Debug version'
-    debug:
-      var: jira__version.stdout_lines
+  - name: 'Version output'
+    ansible.builtin.debug:
+      var: jira__version_check.stdout
