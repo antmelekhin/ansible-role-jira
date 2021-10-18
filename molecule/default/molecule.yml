@@ -23,5 +23,9 @@ platforms:
     command: "/usr/sbin/init"
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      local_tmp: /tmp/.ansible-$USER/tmp
+      remote_tmp: /tmp/.ansible-$USER/tmp
 verifier:
   name: ansible
