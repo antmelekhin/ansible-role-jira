@@ -1,0 +1,5 @@
+---
+# vars file for jira
+
+jira__install_path: '{{ jira__root_path }}/{{ jira__version }}'
+jira__application_path: '{{ jira__root_path }}/jira'

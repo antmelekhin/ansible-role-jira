@@ -1,7 +1,7 @@
 Jira
 ====
 
-Ansible роль для установки и настройки Jira.
+Ansible роль для установки, настройки и обновления [Jira](https://www.atlassian.com/ru/software/jira).
 
 Требования
 ----------
@@ -22,7 +22,7 @@ Ansible роль для установки и настройки Jira.
 - `jira__archive_url` Ссылка на скачивание архива с приложением.
 - `jira__username` Unix имя пользователя (default: `jira`).
 - `jira__group` Unix группа пользователя (default: `jira`).
-- `jira__install_path` Каталог, в который будет установлено приложение (default: `/opt/atlassian/jira`).
+- `jira__root_path` Каталог, в который будет распакован архив и установлено приложение (default: `/opt/atlassian`).
 - `jira__home_path` Домашний каталог Jira (default: `/var/atlassian/application-data/jira`).
 - `jira__jvm_minimum_memory` Минимальный объем памяти, используемый JVM (default: `384m`).
 - `jira__jvm_maximum_memory` Максимальный объем памяти, используемый JVM (default: `2048m`).

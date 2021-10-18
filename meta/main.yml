@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: Melekhin Anton
-  description: An Ansible role for install and configure Jira.
+  description: An Ansible role for install, configure and update Jira.
   company: HOUSING ECOSYSTEM VTB LLC
 
   license: MIT

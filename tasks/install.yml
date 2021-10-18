@@ -19,3 +19,9 @@
     owner: '{{ jira__username }}'
     group: '{{ jira__group }}'
   when: jira__archive_result.changed
+
+- name: 'Create symbolic link for Jira'
+  ansible.builtin.file:
+    src: '{{ jira__install_path }}'
+    dest: '{{ jira__application_path }}'
+    state: link

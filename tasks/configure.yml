@@ -12,7 +12,7 @@
 - name: 'Configure Jira'
   ansible.builtin.template:
     src: 'server.xml.j2'
-    dest: '{{ jira__install_path }}/conf/server.xml'
+    dest: '{{ jira__application_path }}/conf/server.xml'
     owner: '{{ jira__username }}'
     group: '{{ jira__group }}'
     mode: 0644
@@ -21,7 +21,7 @@
 - name: 'Configure Jira environment'
   ansible.builtin.template:
     src: 'setenv.sh.j2'
-    dest: '{{ jira__install_path }}/bin/setenv.sh'
+    dest: '{{ jira__application_path }}/bin/setenv.sh'
     owner: '{{ jira__username }}'
     group: '{{ jira__group }}'
     mode: 0755
