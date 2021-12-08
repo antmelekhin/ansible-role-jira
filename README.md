@@ -18,7 +18,7 @@ Ansible роль для установки, настройки и обновле
   - `software` (default)
   - `core`
 
-- `jira__version` Версия Jira для установки (default: `8.13.0`).
+- `jira__version` Версия Jira для установки (default: `8.20.2`).
 - `jira__archive_url` Ссылка на скачивание архива с приложением.
 - `jira__username` Unix имя пользователя (default: `jira`).
 - `jira__group` Unix группа пользователя (default: `jira`).
