@@ -19,7 +19,6 @@ Ansible роль для установки, настройки и обновле
   - `core`
 
 - `jira__version` Версия Jira для установки (default: `8.20.2`).
-- `jira__archive_url` Ссылка на скачивание архива с приложением.
 - `jira__username` Unix имя пользователя (default: `jira`).
 - `jira__group` Unix группа пользователя (default: `jira`).
 - `jira__root_path` Каталог, в который будет распакован архив и установлено приложение (default: `/opt/atlassian`).
