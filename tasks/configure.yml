@@ -7,6 +7,12 @@
     owner: '{{ jira__username }}'
     group: '{{ jira__group }}'
     mode: 0644
+  register: jira__service
+
+- name: 'Reload systemd daemon if unit file is changed'
+  ansible.builtin.systemd:
+    daemon_reload: true
+  when: jira__service is changed
   notify: Restart Jira
 
 - name: 'Configure Jira'
@@ -26,3 +32,9 @@
     group: '{{ jira__group }}'
     mode: 0755
   notify: Restart Jira
+
+- name: 'Ensure Jira is running and enabled at boot'
+  ansible.builtin.systemd:
+    name: jira
+    state: started
+    enabled: true

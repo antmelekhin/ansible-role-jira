@@ -1,9 +1,6 @@
 ---
-# handlers file for jira
 
 - name: 'Restart Jira'
   ansible.builtin.systemd:
     name: jira
-    daemon_reload: true
     state: restarted
-    enabled: true
