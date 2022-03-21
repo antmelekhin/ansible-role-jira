@@ -2,6 +2,7 @@
 # See available releases: https://confluence.atlassian.com/jirasoftware/jira-software-8-20-x-release-notes-1086411771.html
 jira__product: 'software'
 jira__version: '8.20.2'
+jira__download_url: 'https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-{{ jira__product }}-{{ jira__version }}.tar.gz'
 
 # Jira user.
 jira__username: 'jira'
