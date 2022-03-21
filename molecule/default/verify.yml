@@ -1,30 +1,27 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
 - name: 'Verify'
   hosts: all
   gather_facts: false
   tasks:
+    - name: 'Gathering Service Facts'
+      ansible.builtin.service_facts:
 
-  - name: 'Gathering Service Facts'
-    ansible.builtin.service_facts:
+    - name: 'Assert that jira service is enabled and running'
+      ansible.builtin.assert:
+        that:
+          - ansible_facts.services['jira.service'].state == 'running'
+          - ansible_facts.services['jira.service'].status == 'enabled'
 
-  - name: 'Assert that jira service is enabled and running'
-    ansible.builtin.assert:
-      that:
-        - ansible_facts.services['jira.service'].state == 'running'
-        - ansible_facts.services['jira.service'].status == 'enabled'
+    - name: 'Check url'
+      ansible.builtin.uri:
+        url: 'http://{{ ansible_host }}:8080'
 
-  - name: 'Check url'
-    ansible.builtin.uri:
-      url: 'http://{{ ansible_host }}:8080'
+    - name: 'Check current Jira version'
+      ansible.builtin.command:
+        cmd: grep -Po '(?<=^version=)\N*$' /opt/atlassian/jira/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
+      changed_when: false
+      register: jira__version_check
 
-  - name: 'Check current Jira version'
-    ansible.builtin.command:
-      cmd: grep -Po '(?<=^version=)\N*$' /opt/atlassian/jira/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
-    changed_when: false
-    register: jira__version_check
-
-  - name: 'Version output'
-    ansible.builtin.debug:
-      var: jira__version_check.stdout
+    - name: 'Version output'
+      ansible.builtin.debug:
+        var: jira__version_check.stdout

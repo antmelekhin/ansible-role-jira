@@ -1,5 +1,4 @@
 ---
-
 - name: 'Check current Jira version'
   ansible.builtin.command:
     cmd: grep -Po '(?<=^version=)\N*$' '{{ jira__application_path }}/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties'

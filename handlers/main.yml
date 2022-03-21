@@ -1,5 +1,4 @@
 ---
-
 - name: 'Restart Jira'
   ansible.builtin.systemd:
     name: jira

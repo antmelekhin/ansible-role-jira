@@ -1,5 +1,4 @@
 ---
-
 - name: 'Create Jira unit for SystemD'
   ansible.builtin.template:
     src: jira.service.j2

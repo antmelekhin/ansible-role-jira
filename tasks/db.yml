@@ -1,5 +1,4 @@
 ---
-
 - name: 'Configure Jira database connection'
   ansible.builtin.template:
     src: 'dbconfig.xml.j2'

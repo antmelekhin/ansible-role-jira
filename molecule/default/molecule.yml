@@ -1,5 +1,4 @@
 ---
-
 dependency:
   name: galaxy
   enabled: true
@@ -20,7 +19,7 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
-    command: "/usr/sbin/init"
+    command: '/usr/sbin/init'
 provisioner:
   name: ansible
   config_options:

@@ -1,5 +1,4 @@
 ---
-
 - name: 'Include tasks for preparing to install Jira'
   ansible.builtin.import_tasks: 'pre-install.yml'
 

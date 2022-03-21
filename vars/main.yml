@@ -1,5 +1,4 @@
 ---
-
 jira__download_url: 'https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-{{ jira__product }}-{{ jira__version }}.tar.gz'
 jira__install_path: '{{ jira__root_path }}/{{ jira__version }}'
 jira__application_path: '{{ jira__root_path }}/jira'

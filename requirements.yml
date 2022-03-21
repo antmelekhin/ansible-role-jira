@@ -1,5 +1,4 @@
 ---
-
 roles:
   - src: geerlingguy.java
   - src: geerlingguy.postgresql
