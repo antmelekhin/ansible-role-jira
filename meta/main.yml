@@ -4,17 +4,16 @@ galaxy_info:
   role_name: jira
   namespace: antmelekhin
   description: An Ansible role for install, configure and update Jira.
-  company: HOUSING ECOSYSTEM VTB LLC
 
   license: MIT
 
-  min_ansible_version: 2.7
+  min_ansible_version: '2.9'
 
   platforms:
     - name: EL
       versions:
-        - 7
-        - 8
+        - '7'
+        - '8'
 
   galaxy_tags:
     - jira
