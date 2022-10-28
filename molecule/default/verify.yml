@@ -2,6 +2,9 @@
 - name: 'Verify'
   hosts: all
   gather_facts: false
+  vars:
+    jira_path: '/opt/atlassian/jira/current'
+
   tasks:
     - name: 'Gathering Service Facts'
       ansible.builtin.service_facts:
@@ -18,7 +21,7 @@
 
     - name: 'Check current Jira version'
       ansible.builtin.command:
-        cmd: grep -Po '(?<=^version=)\N*$' /opt/atlassian/jira/current/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties
+        cmd: grep -Po '(?<=^version=)\N*$' '{{ jira_path }}/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties'
       changed_when: false
       register: _jira_version_check
 
