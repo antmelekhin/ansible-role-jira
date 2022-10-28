@@ -3,32 +3,32 @@
   ansible.builtin.template:
     src: jira.service.j2
     dest: /etc/systemd/system/jira.service
-    owner: '{{ jira__username }}'
-    group: '{{ jira__group }}'
+    owner: '{{ jira_username }}'
+    group: '{{ jira_group }}'
     mode: 0644
-  register: jira__service
+  register: _jira_service
 
 - name: 'Reload systemd daemon if unit file is changed'
   ansible.builtin.systemd:
     daemon_reload: true
-  when: jira__service is changed
+  when: _jira_service is changed
   notify: Restart Jira
 
 - name: 'Configure Jira'
   ansible.builtin.template:
     src: 'server.xml.j2'
-    dest: '{{ jira__application_path }}/conf/server.xml'
-    owner: '{{ jira__username }}'
-    group: '{{ jira__group }}'
+    dest: '{{ _jira_application_path }}/conf/server.xml'
+    owner: '{{ jira_username }}'
+    group: '{{ jira_group }}'
     mode: 0644
   notify: Restart Jira
 
 - name: 'Configure Jira environment'
   ansible.builtin.template:
     src: 'setenv.sh.j2'
-    dest: '{{ jira__application_path }}/bin/setenv.sh'
-    owner: '{{ jira__username }}'
-    group: '{{ jira__group }}'
+    dest: '{{ _jira_application_path }}/bin/setenv.sh'
+    owner: '{{ jira_username }}'
+    group: '{{ jira_group }}'
     mode: 0755
   notify: Restart Jira
 

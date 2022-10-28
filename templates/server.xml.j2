@@ -26,10 +26,10 @@
     <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
 
     <Service name="Catalina">
-        {% if jira__catalina_connector_proxyname is defined and jira__catalina_connector_proxyname | length -%}
+        {% if jira_catalina_connector_proxyname is defined and jira_catalina_connector_proxyname | length -%}
         <!--
         ==============================================================================================================
-        {{ jira__catalina_connector_scheme | upper }} - Proxying Jira via Apache or Nginx over {{ jira__catalina_connector_scheme | upper }}
+        {{ jira_catalina_connector_scheme | upper }} - Proxying Jira via Apache or Nginx over {{ jira_catalina_connector_scheme | upper }}
 
         See the following for more information:
 
@@ -52,10 +52,10 @@
             acceptCount="100"
             disableUploadTimeout="true"
             bindOnInit="false"
-            secure="{{ (jira__catalina_connector_scheme | lower == "http") | ternary("false", "true") }}"
-            scheme="{{ jira__catalina_connector_scheme | lower }}"
-            proxyName="{{ jira__catalina_connector_proxyname }}"
-            proxyPort="{{ jira__catalina_connector_proxyport }}"/>
+            secure="{{ (jira_catalina_connector_scheme | lower == "http") | ternary("false", "true") }}"
+            scheme="{{ jira_catalina_connector_scheme | lower }}"
+            proxyName="{{ jira_catalina_connector_proxyname }}"
+            proxyPort="{{ jira_catalina_connector_proxyport }}"/>
         {% else -%}
 
         <!--

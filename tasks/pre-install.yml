@@ -6,23 +6,23 @@
 
 - name: 'Create Jira group'
   ansible.builtin.group:
-    name: '{{ jira__group }}'
+    name: '{{ jira_group }}'
 
 - name: 'Create Jira user'
   ansible.builtin.user:
-    name: '{{ jira__username }}'
-    group: '{{ jira__group }}'
+    name: '{{ jira_username }}'
+    group: '{{ jira_group }}'
     comment: 'Atlassian JIRA'
     shell: /bin/bash
-  register: jira__user_result
+  register: _jira_user_result
 
 - name: 'Create Jira directories'
   ansible.builtin.file:
     path: '{{ item }}'
-    owner: '{{ jira__username }}'
-    group: '{{ jira__group }}'
+    owner: '{{ jira_username }}'
+    group: '{{ jira_group }}'
     state: directory
     mode: 0755
   with_items:
-    - '{{ jira__install_path }}'
-    - '{{ jira__home_path }}'
+    - '{{ _jira_install_path }}'
+    - '{{ jira_home_path }}'

@@ -7,7 +7,7 @@ MIN_NOFILES_LIMIT=16384
 #
 # One way to set the JIRA HOME path is here via this variable. Simply uncomment it and set a valid path like /jira/home. You can of course set it outside in the command terminal. That will also work.
 #
-JIRA_HOME="{{ jira__home_path }}"
+JIRA_HOME="{{ jira_home_path }}"
 
 #
 # Occasionally Atlassian Support may recommend that you set some specific JVM arguments. You can use this variable below to do that.
@@ -25,8 +25,8 @@ JVM_GC_ARGS="-XX:+ExplicitGCInvokesConcurrent"
 #
 # The following 2 settings control the minimum and maximum given to the JIRA Java virtual machine. In larger JIRA instances, the maximum amount will need to be increased.
 #
-JVM_MINIMUM_MEMORY="{{ jira__jvm_minimum_memory }}"
-JVM_MAXIMUM_MEMORY="{{ jira__jvm_maximum_memory }}"
+JVM_MINIMUM_MEMORY="{{ jira_jvm_minimum_memory }}"
+JVM_MAXIMUM_MEMORY="{{ jira_jvm_maximum_memory }}"
 
 #
 # The following setting configures the size of JVM code cache. A high value of reserved size allows Jira to work with more installed apps.

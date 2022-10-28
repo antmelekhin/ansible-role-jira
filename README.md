@@ -12,28 +12,28 @@ Ansible роль для установки, настройки и обновле
 Используемые переменные
 -----------------------
 
-- `jira__product` Продукт Jira.
+- `jira_product` Продукт Jira.
 
   Доступные значения:
   - `software` (default)
   - `core`
 
-- `jira__version` Версия Jira для установки (default: `8.20.2`).
-- `jira__download_url` Ссылка на скачивание архива с приложением.
-- `jira__username` Unix имя пользователя (default: `jira`).
-- `jira__group` Unix группа пользователя (default: `jira`).
-- `jira__root_path` Каталог, в который будет распакован архив и установлено приложение (default: `/opt/atlassian`).
-- `jira__home_path` Домашний каталог Jira (default: `/var/atlassian/application-data/jira`).
-- `jira__jvm_minimum_memory` Минимальный объем памяти, используемый JVM (default: `384m`).
-- `jira__jvm_maximum_memory` Максимальный объем памяти, используемый JVM (default: `2048m`).
-- `jira__db_configuration` Настройка подключения к БД (default: `false`).
-- `jira__db_address` IP адрес или DNS имя сервера БД.
-- `jira__db_port` Порт БД.
-- `jira__db_name` Имя БД.
-- `jira__db_username` Имя пользователя БД.
-- `jira__db_password` Пароль пользователя БД.
-- `jira__catalina_connector_proxyname` Fqdn имя сервера. Если обратный прокси не используется, то нужно эту переменную оставить без значения.
-- `jira__catalina_connector_scheme` Протокол.
+- `jira_version` Версия Jira для установки (default: `8.20.2`).
+- `jira_download_url` Ссылка на скачивание архива с приложением.
+- `jira_username` Unix имя пользователя (default: `jira`).
+- `jira_group` Unix группа пользователя (default: `jira`).
+- `jira_root_path` Каталог, в который будет распакован архив и установлено приложение (default: `/opt/atlassian/jira`).
+- `jira_home_path` Домашний каталог Jira (default: `/var/atlassian/application-data/jira`).
+- `jira_jvm_minimum_memory` Минимальный объем памяти, используемый JVM (default: `384m`).
+- `jira_jvm_maximum_memory` Максимальный объем памяти, используемый JVM (default: `2048m`).
+- `jira_db_configuration` Настройка подключения к БД (default: `false`).
+- `jira_db_address` IP адрес или DNS имя сервера БД.
+- `jira_db_port` Порт БД.
+- `jira_db_name` Имя БД.
+- `jira_db_username` Имя пользователя БД.
+- `jira_db_password` Пароль пользователя БД.
+- `jira_catalina_connector_proxyname` Fqdn имя сервера. Если обратный прокси не используется, то нужно эту переменную оставить без значения.
+- `jira_catalina_connector_scheme` Протокол.
 
   Доступные значения:
   - `http` (default)
@@ -41,9 +41,9 @@ Ansible роль для установки, настройки и обновле
 
     **Внимание** При использовании `https` протокола нужно установить SSL сертификат на сервере с обратным прокси.
 
-- `jira__catalina_connector_proxyport` Порт сервера (default: `80` или `443`).
-  - `80` при установке переменной `jira__catalina_connector_scheme` в значение `http`.
-  - `443` при установке переменной `jira__catalina_connector_scheme` в значение `https`.
+- `jira_catalina_connector_proxyport` Порт сервера (default: `80` или `443`).
+  - `80` при установке переменной `jira_catalina_connector_scheme` в значение `http`.
+  - `443` при установке переменной `jira_catalina_connector_scheme` в значение `https`.
 
 Зависимости
 -----------
@@ -99,12 +99,12 @@ Ansible роль для установки, настройки и обновле
             template: 'template0'
             owner: '{{ db_username }}'
       - role: ansible-role-jira
-        jira__db_configuration: true
-        jira__db_address: 127.0.0.1
-        jira__db_port: 5432
-        jira__db_name: '{{ db_name }}'
-        jira__db_username: '{{ db_username }}'
-        jira__db_password: '{{ db_password }}'
+        jira_db_configuration: true
+        jira_db_address: 127.0.0.1
+        jira_db_port: 5432
+        jira_db_name: '{{ db_name }}'
+        jira_db_username: '{{ db_username }}'
+        jira_db_password: '{{ db_password }}'
     ```
 
 Лицензия
@@ -115,4 +115,4 @@ MIT
 Информация об авторе
 --------------------
 
-Мелехин Антон, ООО "ЖИЛИЩНАЯ ЭКОСИСТЕМА ВТБ".
+Мелехин Антон.

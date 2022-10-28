@@ -8,10 +8,10 @@
   <database-type>postgres72</database-type>
   <schema-name>public</schema-name>
   <jdbc-datasource>
-    <url>jdbc:postgresql://{{ jira__db_address }}:{{ jira__db_port }}/{{ jira__db_name }}</url>
+    <url>jdbc:postgresql://{{ jira_db_address }}:{{ jira_db_port }}/{{ jira_db_name }}</url>
     <driver-class>org.postgresql.Driver</driver-class>
-    <username>{{ jira__db_username }}</username>
-    <password>{{ jira__db_password }}</password>
+    <username>{{ jira_db_username }}</username>
+    <password>{{ jira_db_password }}</password>
     <pool-min-size>30</pool-min-size>
     <pool-max-size>30</pool-max-size>
     <pool-max-wait>30000</pool-max-wait>

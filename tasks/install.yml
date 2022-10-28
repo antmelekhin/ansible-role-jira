@@ -1,26 +1,26 @@
 ---
 - name: 'Check current Jira version'
   ansible.builtin.command:
-    cmd: grep -Po '(?<=^version=)\N*$' '{{ jira__application_path }}/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties'
+    cmd: grep -Po '(?<=^version=)\N*$' '{{ _jira_application_path }}/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties'
   failed_when: false
   changed_when: false
-  register: jira__version_check
+  register: _jira_version_check
 
 - name: 'Download and unarchive Jira'
   ansible.builtin.unarchive:
-    src: '{{ jira__download_url }}'
-    dest: '{{ jira__install_path }}'
+    src: '{{ jira_download_url }}'
+    dest: '{{ _jira_install_path }}'
     extra_opts:
       - --strip-components=1
     remote_src: true
-    owner: '{{ jira__username }}'
-    group: '{{ jira__group }}'
+    owner: '{{ jira_username }}'
+    group: '{{ jira_group }}'
   when:
-    - jira__version_check.stdout is not defined or
-      jira__version not in jira__version_check.stdout
+    - _jira_version_check.stdout is not defined or
+      jira_version not in _jira_version_check.stdout
 
 - name: 'Create symbolic link for Jira'
   ansible.builtin.file:
-    src: '{{ jira__install_path }}'
-    dest: '{{ jira__application_path }}'
+    src: '{{ _jira_install_path }}'
+    dest: '{{ _jira_application_path }}'
     state: link
