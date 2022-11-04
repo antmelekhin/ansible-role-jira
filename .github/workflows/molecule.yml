@@ -7,6 +7,10 @@ on:
       - main
       - master
 
+defaults:
+  run:
+    working-directory: 'antmelekhin.jira'
+
 jobs:
   test:
     name: 'Test'
