@@ -14,6 +14,12 @@ galaxy_info:
       versions:
         - '7'
         - '8'
+    - name: Ubuntu
+      versions:
+        - 'focal'
+    - name: Debian
+      versions:
+        - 'bullseye'
 
   galaxy_tags:
     - jira
