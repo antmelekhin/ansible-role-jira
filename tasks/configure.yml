@@ -1,39 +1,43 @@
 ---
-- name: 'Create Jira unit for SystemD'
-  ansible.builtin.template:
-    src: jira.service.j2
-    dest: /etc/systemd/system/jira.service
-    owner: '{{ jira_username }}'
-    group: '{{ jira_group }}'
-    mode: 0644
-  register: _jira_service
+- name: 'Configure and start Jira'
+  block:
+    - name: 'Create Jira unit for SystemD'
+      ansible.builtin.template:
+        src: jira.service.j2
+        dest: /etc/systemd/system/jira.service
+        owner: '{{ jira_username }}'
+        group: '{{ jira_group }}'
+        mode: 0644
+      register: _jira_service
 
-- name: 'Reload systemd daemon if unit file is changed'
-  ansible.builtin.systemd:
-    daemon_reload: true
-  when: _jira_service is changed
-  notify: Restart Jira
+    - name: 'Reload systemd daemon if unit file is changed'
+      ansible.builtin.systemd:
+        daemon_reload: true
+      when: _jira_service is changed
+      notify: Restart Jira
 
-- name: 'Configure Jira'
-  ansible.builtin.template:
-    src: 'server.xml.j2'
-    dest: '{{ _jira_application_path }}/conf/server.xml'
-    owner: '{{ jira_username }}'
-    group: '{{ jira_group }}'
-    mode: 0644
-  notify: Restart Jira
+    - name: 'Configure Jira server'
+      ansible.builtin.template:
+        src: 'server.xml.j2'
+        dest: '{{ _jira_application_path }}/conf/server.xml'
+        owner: '{{ jira_username }}'
+        group: '{{ jira_group }}'
+        mode: 0644
+      notify: Restart Jira
 
-- name: 'Configure Jira environment'
-  ansible.builtin.template:
-    src: 'setenv.sh.j2'
-    dest: '{{ _jira_application_path }}/bin/setenv.sh'
-    owner: '{{ jira_username }}'
-    group: '{{ jira_group }}'
-    mode: 0755
-  notify: Restart Jira
+    - name: 'Configure Jira environment'
+      ansible.builtin.template:
+        src: 'setenv.sh.j2'
+        dest: '{{ _jira_application_path }}/bin/setenv.sh'
+        owner: '{{ jira_username }}'
+        group: '{{ jira_group }}'
+        mode: 0755
+      notify: Restart Jira
 
-- name: 'Ensure Jira is running and enabled at boot'
-  ansible.builtin.systemd:
-    name: jira
-    state: started
-    enabled: true
+    - name: 'Ensure Jira is running and enabled at boot'
+      ansible.builtin.systemd:
+        name: jira
+        state: started
+        enabled: true
+      when: not ansible_check_mode
+  become: true

@@ -1,28 +1,33 @@
 ---
-- name: 'Install fontconfig'
-  ansible.builtin.package:
-    name: fontconfig
-    state: present
+- name: 'Prepare for install Jira'
+  block:
+    - name: 'Install fontconfig'
+      ansible.builtin.package:
+        name: fontconfig
+        state: present
 
-- name: 'Create Jira group'
-  ansible.builtin.group:
-    name: '{{ jira_group }}'
+    - name: 'Create Jira group'
+      ansible.builtin.group:
+        name: '{{ jira_group }}'
 
-- name: 'Create Jira user'
-  ansible.builtin.user:
-    name: '{{ jira_username }}'
-    group: '{{ jira_group }}'
-    comment: 'Atlassian JIRA'
-    shell: /bin/bash
-  register: _jira_user_result
+    - name: 'Create Jira user'
+      ansible.builtin.user:
+        name: '{{ jira_username }}'
+        group: '{{ jira_group }}'
+        comment: 'Atlassian JIRA'
+        shell: /bin/bash
+      register: _jira_user_result
 
-- name: 'Create Jira directories'
-  ansible.builtin.file:
-    path: '{{ item }}'
-    owner: '{{ jira_username }}'
-    group: '{{ jira_group }}'
-    state: directory
-    mode: 0755
-  with_items:
-    - '{{ _jira_install_path }}'
-    - '{{ jira_home_path }}'
+    - name: 'Create Jira directories'
+      ansible.builtin.file:
+        path: '{{ jira_path }}'
+        owner: '{{ jira_username }}'
+        group: '{{ jira_group }}'
+        state: directory
+        mode: 0755
+      loop:
+        - '{{ _jira_install_path }}'
+        - '{{ jira_home_path }}'
+      loop_control:
+        loop_var: jira_path
+  become: true

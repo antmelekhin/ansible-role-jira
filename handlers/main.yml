@@ -3,3 +3,5 @@
   ansible.builtin.systemd:
     name: jira
     state: restarted
+  when: not ansible_check_mode
+  become: true
