@@ -11,4 +11,4 @@
 
   roles:
     - role: geerlingguy.java
-    - role: ansible-role-jira
+    - role: antmelekhin.jira
