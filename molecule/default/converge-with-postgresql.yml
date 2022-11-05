@@ -1,0 +1,35 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    db_name: 'jira'
+    db_username: 'jira'
+    db_password: 'P@ssw0rd!'
+
+  pre_tasks:
+    - name: 'Update apt cache'
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 600
+      when: ansible_os_family == 'Debian'
+
+  roles:
+    - role: geerlingguy.java
+    - role: geerlingguy.postgresql
+      postgresql_users:
+        - name: '{{ db_username }}'
+          password: '{{ db_password }}'
+      postgresql_databases:
+        - name: '{{ db_name }}'
+          lc_collate: 'en_US.UTF-8'
+          lc_ctype: 'en_US.UTF-8'
+          encoding: 'UTF-8'
+          template: 'template0'
+          owner: '{{ db_username }}'
+    - role: antmelekhin.jira
+      jira_db_configuration: true
+      jira_db_address: 127.0.0.1
+      jira_db_port: 5432
+      jira_db_name: '{{ db_name }}'
+      jira_db_username: '{{ db_username }}'
+      jira_db_password: '{{ db_password }}'
