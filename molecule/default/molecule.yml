@@ -10,8 +10,8 @@ lint: |
   ansible-lint
 platforms:
   - name: instance
-    image: 'geerlingguy/docker-${MOLECULE_DISTRO:-rockylinux8}-ansible:latest'
-    command: "${MOLECULE_DOCKER_COMMAND:-'/usr/sbin/init'}"
+    image: 'geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2004}-ansible:latest'
+    command: "${MOLECULE_DOCKER_COMMAND:-'/lib/systemd/systemd'}"
     exposed_ports:
       - 8080/udp
       - 8080/tcp
