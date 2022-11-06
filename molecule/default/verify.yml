@@ -18,6 +18,10 @@
     - name: 'Check url'
       ansible.builtin.uri:
         url: 'http://{{ ansible_host }}:8080'
+      register: _result
+      until: _result.status == 200
+      retries: 120
+      delay: 5
 
     - name: 'Check current Jira version'
       ansible.builtin.command:
