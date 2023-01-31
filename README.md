@@ -7,7 +7,6 @@ Requirements
 ------------
 
 - Supported version of Ansible: 2.9 and highter.
-- `gnu-tar` on Mac as deployer host (`brew install gnu-tar`).
 - List of all supported platforms described in role meta.
 
 Role Variables
@@ -19,13 +18,13 @@ Role Variables
   - `software` (default)
   - `core`
 
-- `jira_version` The Specific version of Jira to download (default: `8.20.2`).
-- `jira_archive_name` Jira archive name (default: `atlassian-jira-{{ jira_product }}-{{ jira_version }}.tar.gz`).
+- `jira_version` The specific version of Jira to download (default: `8.20.2`).
+- `jira_archive_name` Jira archive name (default: `atlassian-jira-software-8.20.2.tar.gz`).
 - `jira_download_url` URL to download an archive with Jira (default: `https://www.atlassian.com/software/jira/downloads/binary`).
 - `jira_username` and `jira_group` Unix username and group (default: `jira`).
 - `jira_root_path` Path to Jira installation directory (default: `/opt/atlassian/jira`).
 - `jira_home_path` Path to Jira home directory (default: `/var/atlassian/application-data/jira`).
-- `confluence_jvm_minimum_memory` and `confluence_jvm_maximum_memory` The minimum and maximum size of the heap (default: `384m` and `2048m`).
+- `jira_jvm_minimum_memory` and `jira_jvm_maximum_memory` The minimum and maximum size of the heap (default: `384m` and `2048m`).
 - `jira_db_configuration` DB connection configuration (default: `false`).
 - `jira_db_address` IP address or DNS name of DB server.
 - `jira_db_port` DB port.
@@ -86,7 +85,7 @@ Example Playbook
             encoding: 'UTF-8'
             template: 'template0'
             owner: '{{ db_username }}'
-      - role: ansible-role-jira
+      - role: antmelekhin.jira
         jira_db_configuration: true
         jira_db_address: 127.0.0.1
         jira_db_port: 5432
