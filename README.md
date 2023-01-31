@@ -1,80 +1,66 @@
 Jira
 ====
 
-Ansible роль для установки, настройки и обновления [Jira](https://www.atlassian.com/ru/software/jira).
+An Ansible role for install, configure and update [Jira](https://www.atlassian.com/ru/software/jira).
 
-Требования
-----------
+Requirements
+------------
 
-- Поддерживаемая версия Ansible: 2.9 и выше.
-- `gnu-tar` при использовании Mac в качестве управляющего хоста (`brew install gnu-tar`).
-- Список поддерживаемых платформ описан в файле метаданных роли.
+- Supported version of Ansible: 2.9 and highter.
+- List of all supported platforms described in role meta.
 
-Используемые переменные
------------------------
+Role Variables
+--------------
 
-- `jira_product` Продукт Jira.
+- `jira_product` Jira product.
 
-  Доступные значения:
+  Available values:
   - `software` (default)
   - `core`
 
-- `jira_version` Версия Jira для установки (default: `8.20.2`).
-- `jira_download_url` Ссылка на скачивание архива с приложением.
-- `jira_username` Unix имя пользователя (default: `jira`).
-- `jira_group` Unix группа пользователя (default: `jira`).
-- `jira_root_path` Каталог, в который будет распакован архив и установлено приложение (default: `/opt/atlassian/jira`).
-- `jira_home_path` Домашний каталог Jira (default: `/var/atlassian/application-data/jira`).
-- `jira_jvm_minimum_memory` Минимальный объем памяти, используемый JVM (default: `384m`).
-- `jira_jvm_maximum_memory` Максимальный объем памяти, используемый JVM (default: `2048m`).
-- `jira_db_configuration` Настройка подключения к БД (default: `false`).
-- `jira_db_address` IP адрес или DNS имя сервера БД.
-- `jira_db_port` Порт БД.
-- `jira_db_name` Имя БД.
-- `jira_db_username` Имя пользователя БД.
-- `jira_db_password` Пароль пользователя БД.
-- `jira_catalina_connector_proxyname` Fqdn имя сервера. Если обратный прокси не используется, то нужно эту переменную оставить без значения.
-- `jira_catalina_connector_scheme` Протокол.
+- `jira_version` The specific version of Jira to download (default: `8.20.2`).
+- `jira_archive_name` Jira archive name (default: `atlassian-jira-software-8.20.2.tar.gz`).
+- `jira_download_url` URL to download an archive with Jira (default: `https://www.atlassian.com/software/jira/downloads/binary`).
+- `jira_username` and `jira_group` Unix username and group (default: `jira`).
+- `jira_root_path` Path to Jira installation directory (default: `/opt/atlassian/jira`).
+- `jira_home_path` Path to Jira home directory (default: `/var/atlassian/application-data/jira`).
+- `jira_jvm_minimum_memory` and `jira_jvm_maximum_memory` The minimum and maximum size of the heap (default: `384m` and `2048m`).
+- `jira_db_configuration` DB connection configuration (default: `false`).
+- `jira_db_address` IP address or DNS name of DB server.
+- `jira_db_port` DB port.
+- `jira_db_name` DB name.
+- `jira_db_username` DB username.
+- `jira_db_password` DB password.
+- `jira_catalina_connector_proxyname` Fqdn server name. If you don't use a reverse proxy, then you'll need to leave this variable without value.
+- `jira_catalina_connector_scheme` Connection scheme.
 
-  Доступные значения:
+  Available values:
   - `http` (default)
   - `https`
 
-    **Внимание** При использовании `https` протокола нужно установить SSL сертификат на сервере с обратным прокси.
+    **Attention** If you use `https` value, you'll need to install SSL sertificate on server with reverse proxy.
 
-- `jira_catalina_connector_proxyport` Порт сервера (default: `80` или `443`).
-  - `80` при установке переменной `jira_catalina_connector_scheme` в значение `http`.
-  - `443` при установке переменной `jira_catalina_connector_scheme` в значение `https`.
+- `jira_catalina_connector_proxyport` Server port (default: `80` or `443`).
+  - `80` sets automatically if value in `jira_catalina_connector_scheme` is `http`.
+  - `443` sets automatically if value in `jira_catalina_connector_scheme` is `https`.
 
-Зависимости
------------
+Dependencies
+------------
 
-Роль не устанавливает `java`, обратный прокси (`apache` или `nginx`) и систему управления БД, вы должны установить пакеты самостоятельно перед запуском роли.
+This role doesn't install `java`, reverse proxy (`apache` or `nginx`) and DB management system. You'll need to install packages before using.
 
-Пример использования
---------------------
+Example Playbook
+----------------
 
-- Устанавливаем `Jira` и настраиваем подключение к БД через веб-интерфейс:
+- Install `Jira` with dependencies (`Java` and `PostgreSQL`):
 
-  ```yaml
-  ---
-
-  - name: Setup Jira
-    hosts: jira
-
-    roles:
-      - role: ansible-role-jira
-  ```
-
-- Устанавливаем `Jira` со всеми зависимостями на одном хосте (`Java` и `PostgreSQL`):
-
-  - Устанавливаем зависимости:
+  - Install dependencies:
 
     ```bash
     ansible-galaxy install -r requirements.yml
     ```
 
-  - Запускаем playbook:
+  - Run playbook:
 
     ```yaml
     ---
@@ -99,7 +85,7 @@ Ansible роль для установки, настройки и обновле
             encoding: 'UTF-8'
             template: 'template0'
             owner: '{{ db_username }}'
-      - role: ansible-role-jira
+      - role: antmelekhin.jira
         jira_db_configuration: true
         jira_db_address: 127.0.0.1
         jira_db_port: 5432
@@ -108,12 +94,12 @@ Ansible роль для установки, настройки и обновле
         jira_db_password: '{{ db_password }}'
     ```
 
-Лицензия
---------
+License
+-------
 
 MIT
 
-Информация об авторе
---------------------
+Author Information
+------------------
 
-Мелехин Антон.
+Melekhin Anton.

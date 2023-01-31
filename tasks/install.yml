@@ -10,14 +10,14 @@
   block:
     - name: 'Download Jira archive to local folder'
       ansible.builtin.get_url:
-        url: '{{ jira_download_url }}'
-        dest: '/tmp/atlassian-jira-{{ jira_product }}-{{ jira_version }}.tar.gz'
+        url: '{{ jira_download_url }}/{{ jira_archive_name }}'
+        dest: '/tmp/{{ jira_archive_name }}'
         mode: 0644
       delegate_to: localhost
 
     - name: 'Unarchive Jira'
       ansible.builtin.unarchive:
-        src: '/tmp/atlassian-jira-{{ jira_product }}-{{ jira_version }}.tar.gz'
+        src: '/tmp/{{ jira_archive_name }}'
         dest: '{{ _jira_install_path }}'
         owner: '{{ jira_username }}'
         group: '{{ jira_group }}'
