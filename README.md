@@ -7,7 +7,16 @@ Requirements
 ------------
 
 - Supported version of Ansible: 2.9 and highter.
-- List of all supported platforms described in role meta.
+- Supported platforms:
+  - Debian
+    - 10
+    - 11
+  - RHEL
+    - 7
+    - 8
+  - Ubuntu
+    - 18.04
+    - 20.04
 
 Role Variables
 --------------
