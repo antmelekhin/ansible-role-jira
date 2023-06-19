@@ -6,5 +6,5 @@
     owner: '{{ jira_username }}'
     group: '{{ jira_group }}'
     mode: 0600
-  notify: Restart Jira
   become: true
+  notify: Restart Jira

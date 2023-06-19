@@ -7,6 +7,10 @@
   register: _jira_version_check
 
 - name: 'Download and unarchive Jira'
+  when:
+    - not ansible_check_mode
+    - _jira_version_check.stdout is not defined or
+      jira_version not in _jira_version_check.stdout
   block:
     - name: 'Download Jira archive to local folder'
       ansible.builtin.get_url:
@@ -24,10 +28,6 @@
         extra_opts:
           - --strip-components=1
       become: true
-  when:
-    - not ansible_check_mode
-    - _jira_version_check.stdout is not defined or
-      jira_version not in _jira_version_check.stdout
 
 - name: 'Create symbolic link for Jira'
   ansible.builtin.file:

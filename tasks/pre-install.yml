@@ -1,5 +1,6 @@
 ---
 - name: 'Prepare for install Jira'
+  become: true
   block:
     - name: 'Install fontconfig'
       ansible.builtin.package:
@@ -30,4 +31,3 @@
         - '{{ jira_home_path }}'
       loop_control:
         loop_var: jira_path
-  become: true

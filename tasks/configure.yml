@@ -1,19 +1,14 @@
 ---
 - name: 'Configure and start Jira'
+  become: true
   block:
     - name: 'Create Jira unit for SystemD'
       ansible.builtin.template:
-        src: jira.service.j2
-        dest: /etc/systemd/system/jira.service
+        src: 'jira.service.j2'
+        dest: '/etc/systemd/system/jira.service'
         owner: '{{ jira_username }}'
         group: '{{ jira_group }}'
         mode: 0644
-      register: _jira_service
-
-    - name: 'Reload systemd daemon if unit file is changed'
-      ansible.builtin.systemd:
-        daemon_reload: true
-      when: _jira_service is changed
       notify: Restart Jira
 
     - name: 'Configure Jira server'
@@ -40,4 +35,3 @@
         state: started
         enabled: true
       when: not ansible_check_mode
-  become: true
