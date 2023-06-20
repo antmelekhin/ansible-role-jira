@@ -29,6 +29,16 @@
         mode: 0755
       notify: Restart Jira
 
+    - name: 'Configure Jira database connection'
+      ansible.builtin.template:
+        src: 'dbconfig.xml.j2'
+        dest: '{{ jira_home_path }}/dbconfig.xml'
+        owner: '{{ jira_username }}'
+        group: '{{ jira_group }}'
+        mode: 0600
+      notify: Restart Jira
+      when: jira_db_configuration | bool
+
     - name: 'Ensure Jira is running and enabled at boot'
       ansible.builtin.systemd:
         name: jira

@@ -7,7 +7,3 @@
 
 - name: 'Include tasks for Configure Jira'
   ansible.builtin.import_tasks: 'configure.yml'
-
-- name: 'Include tasks for connecting Jira to database'
-  ansible.builtin.import_tasks: 'db.yml'
-  when: jira_db_configuration | bool
