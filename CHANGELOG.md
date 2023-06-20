@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/antmelekhin/ansible-role-jira/compare/v1.0.1...v1.0.2) (2023-06-20)
+
+
+### Fixes
+
+* move db configuration task from db.yml to configure.yml ([1b18d34](https://github.com/antmelekhin/ansible-role-jira/commit/1b18d34f1eeeab1daefa96c13bd2f91652ea2796))
+
 ## [1.0.1](https://github.com/antmelekhin/ansible-role-jira/compare/v1.0.0...v1.0.1) (2023-06-19)
 
 
