@@ -26,7 +26,7 @@
     <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
 
     <Service name="Catalina">
-        {% if jira_catalina_connector_proxyname is defined and jira_catalina_connector_proxyname | length -%}
+        {% if jira_catalina_connector_proxyname | length -%}
         <!--
         ==============================================================================================================
         {{ jira_catalina_connector_scheme | upper }} - Proxying Jira via Apache or Nginx over {{ jira_catalina_connector_scheme | upper }}
