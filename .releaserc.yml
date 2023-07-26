@@ -23,6 +23,8 @@ analyzeCommits:
         release: 'minor'
       - type: 'fix'
         release: 'patch'
+      - type: 'improv'
+        release: 'minor'
       - type: 'refactor'
         release: 'patch'
       - type: 'revert'
@@ -59,6 +61,9 @@ generateNotes:
           hidden: false
         - type: 'fix'
           section: 'Fixes'
+          hidden: false
+        - type: 'improv'
+          section: 'Improvements'
           hidden: false
         - type: 'refactor'
           section: 'Code Refactoring'
