@@ -9,7 +9,7 @@
         owner: '{{ jira_username }}'
         group: '{{ jira_group }}'
         mode: 0644
-      notify: Restart Jira
+      notify: 'Restart Jira'
 
     - name: 'Configure Jira server'
       ansible.builtin.template:
@@ -18,7 +18,7 @@
         owner: '{{ jira_username }}'
         group: '{{ jira_group }}'
         mode: 0644
-      notify: Restart Jira
+      notify: 'Restart Jira'
 
     - name: 'Configure Jira environment'
       ansible.builtin.template:
@@ -27,7 +27,7 @@
         owner: '{{ jira_username }}'
         group: '{{ jira_group }}'
         mode: 0755
-      notify: Restart Jira
+      notify: 'Restart Jira'
 
     - name: 'Configure Jira database connection'
       ansible.builtin.template:
@@ -36,7 +36,7 @@
         owner: '{{ jira_username }}'
         group: '{{ jira_group }}'
         mode: 0600
-      notify: Restart Jira
+      notify: 'Restart Jira'
       when: jira_db_configuration | bool
 
     - name: 'Ensure Jira is running and enabled at boot'
