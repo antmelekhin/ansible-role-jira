@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.0.3](https://github.com/antmelekhin/ansible-role-jira/compare/v1.0.2...v1.0.3) (2023-10-16)
+
+
+### Continuous Integration
+
+* add release type improv ([4b14118](https://github.com/antmelekhin/ansible-role-jira/commit/4b14118a2498f0361676b9966238a63c95217fcb))
+* add script and workflow for update version ([#5](https://github.com/antmelekhin/ansible-role-jira/issues/5)) ([02925b6](https://github.com/antmelekhin/ansible-role-jira/commit/02925b67a82976acbc1571bfff15b0af19badb6d))
+
+
+### Fixes
+
+* **version:** jira updated to `9.4.11` release ([#6](https://github.com/antmelekhin/ansible-role-jira/issues/6)) ([8e66936](https://github.com/antmelekhin/ansible-role-jira/commit/8e66936eb91475c0ca371b659f9fd132e8aa9406))
+
+
+### Styles
+
+* add quotes in notify name ([e087fc7](https://github.com/antmelekhin/ansible-role-jira/commit/e087fc7bd60ebe47defaf7b14050c40dff6d142f))
+* fix jinja2 statement ([a119496](https://github.com/antmelekhin/ansible-role-jira/commit/a119496d75964a436a9cf19a0f7f34d6af432929))
+
+
+### Tests
+
+* add `tzdata-java` package ([4b66cd1](https://github.com/antmelekhin/ansible-role-jira/commit/4b66cd1eea1809a9394d8dcde721b41ae6305623))
+
 ## [1.0.2](https://github.com/antmelekhin/ansible-role-jira/compare/v1.0.1...v1.0.2) (2023-06-20)
 
 
