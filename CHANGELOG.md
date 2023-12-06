@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/antmelekhin/ansible-role-jira/compare/v1.0.4...v1.1.0) (2023-12-06)
+
+
+### Features
+
+* add variables to `setenv.sh` to make it possible to change JVM arguments ([#9](https://github.com/antmelekhin/ansible-role-jira/issues/9)) ([d0434a5](https://github.com/antmelekhin/ansible-role-jira/commit/d0434a575622bb092c1cedbc80df314c0a00817e))
+
 ## [1.0.4](https://github.com/antmelekhin/ansible-role-jira/compare/v1.0.3...v1.0.4) (2023-11-14)
 
 
