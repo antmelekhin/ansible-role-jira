@@ -1,42 +1,41 @@
 {{ ansible_managed | comment }}
-#
 # If the limit of files that Jira can open is too low, it will be set to this value.
 #
-MIN_NOFILES_LIMIT=16384
+MIN_NOFILES_LIMIT={{ jira_min_nofiles_limit }}
 
 #
 # One way to set the JIRA HOME path is here via this variable. Simply uncomment it and set a valid path like /jira/home. You can of course set it outside in the command terminal. That will also work.
 #
-JIRA_HOME="{{ jira_home_path }}"
+JIRA_HOME='{{ jira_home_path }}'
 
 #
 # Occasionally Atlassian Support may recommend that you set some specific JVM arguments. You can use this variable below to do that.
 #
-JVM_SUPPORT_RECOMMENDED_ARGS="-Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
+JVM_SUPPORT_RECOMMENDED_ARGS='{{ jira_jvm_support_recommends_args }}'
 
 #
-#  You can use variable below to modify garbage collector settings.
-#  For Java 8 we recommend default settings
-#  For Java 11 and relatively small heaps we recommend: -XX:+UseParallelGC
-#  For Java 11 and larger heaps we recommend: -XX:+UseG1GC -XX:+ExplicitGCInvokesConcurrent
+# You can use variable below to modify garbage collector settings.
+# For Java 8 we recommend default settings
+# For Java 11 and relatively small heaps we recommend: -XX:+UseParallelGC
+# For Java 11 and larger heaps we recommend: -XX:+UseG1GC -XX:+ExplicitGCInvokesConcurrent
 #
-JVM_GC_ARGS="-XX:+ExplicitGCInvokesConcurrent"
+JVM_GC_ARGS='{{ jira_jvm_gc_args }}'
 
 #
 # The following 2 settings control the minimum and maximum given to the JIRA Java virtual machine. In larger JIRA instances, the maximum amount will need to be increased.
 #
-JVM_MINIMUM_MEMORY="{{ jira_jvm_minimum_memory }}"
-JVM_MAXIMUM_MEMORY="{{ jira_jvm_maximum_memory }}"
+JVM_MINIMUM_MEMORY='{{ jira_jvm_minimum_memory }}'
+JVM_MAXIMUM_MEMORY='{{ jira_jvm_maximum_memory }}'
 
 #
 # The following setting configures the size of JVM code cache. A high value of reserved size allows Jira to work with more installed apps.
 #
-JVM_CODE_CACHE_ARGS='-XX:InitialCodeCacheSize=32m -XX:ReservedCodeCacheSize=512m'
+JVM_CODE_CACHE_ARGS='-XX:InitialCodeCacheSize={{ jira_jvm_initial_code_cache_size }} -XX:ReservedCodeCacheSize={{ jira_jvm_reserved_code_cache_size }}'
 
 #
 # The following are the required arguments for Jira.
 #
-JVM_REQUIRED_ARGS='-Djava.awt.headless=true -Datlassian.standalone=JIRA -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dmail.mime.decodeparameters=true -Dorg.dom4j.factory=com.atlassian.core.xml.InterningDocumentFactory'
+JVM_REQUIRED_ARGS='{{ jira_jvm_required_args }}'
 
 # Uncomment this setting if you want to import data without notifications
 #
@@ -53,7 +52,7 @@ JVM_REQUIRED_ARGS='-Djava.awt.headless=true -Datlassian.standalone=JIRA -Dorg.ap
 # Prevents the JVM from suppressing stack traces if a given type of exception
 # occurs frequently, which could make it harder for support to diagnose a problem.
 #-----------------------------------------------------------------------------------
-JVM_EXTRA_ARGS="-XX:-OmitStackTraceInFastThrow -Djava.locale.providers=COMPAT"
+JVM_EXTRA_ARGS='-XX:-OmitStackTraceInFastThrow -Djava.locale.providers=COMPAT'
 
 CURRENT_NOFILES_LIMIT=$( ulimit -Hn )
 ulimit -Sn $CURRENT_NOFILES_LIMIT

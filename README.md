@@ -33,7 +33,12 @@ Role Variables
 - `jira_username` and `jira_group` Unix username and group (default: `jira`).
 - `jira_root_path` Path to Jira installation directory (default: `/opt/atlassian/jira`).
 - `jira_home_path` Path to Jira home directory (default: `/var/atlassian/application-data/jira`).
+- `jira_min_nofiles_limit` If the limit of files that Jira can open is too low, it will be set to this value (default: `16384`).
+- `jira_jvm_support_recommends_args` Occasionally Atlassian Support may recommend that you set some specific JVM arguments (default: `null`).
+- `jira_jvm_gc_args` You can use variable below to modify garbage collector settings (default: `-XX:+ExplicitGCInvokesConcurrent`).
 - `jira_jvm_minimum_memory` and `jira_jvm_maximum_memory` The minimum and maximum size of the heap (default: `384m` and `2048m`).
+- `jira_jvm_initial_code_cache_size` and `jira_jvm_reserved_code_cache_size` The size of JVM code cache (default: `32m` and `512m`). A high value of reserved size allows Jira to work with more installed apps.
+- `jira_jvm_required_args` The following are the required arguments for Jira.
 - `jira_db_configuration` DB connection configuration (default: `false`).
 - `jira_db_address` IP address or DNS name of DB server.
 - `jira_db_port` DB port.
