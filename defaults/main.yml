@@ -20,7 +20,6 @@ jira_jvm_minimum_memory: '384m'
 jira_jvm_maximum_memory: '2048m'
 jira_jvm_initial_code_cache_size: '32m'
 jira_jvm_reserved_code_cache_size: '512m'
-jira_jvm_required_args: '-Djava.awt.headless=true -Datlassian.standalone=JIRA -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dmail.mime.decodeparameters=true -Dorg.dom4j.factory=com.atlassian.core.xml.InterningDocumentFactory'
 
 # Jira database connection settings.
 jira_db_configuration: false
