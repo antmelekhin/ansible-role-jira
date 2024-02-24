@@ -1,5 +1,5 @@
 ---
-- name: 'Prepare for install Jira'
+- name: 'Prepare to install Jira'
   become: true
   block:
     - name: 'Install fontconfig'
