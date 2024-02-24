@@ -11,12 +11,15 @@ Requirements
   - Debian
     - 10
     - 11
+    - 12
   - RHEL
     - 7
     - 8
+    - 9
   - Ubuntu
     - 18.04
     - 20.04
+    - 22.04
 
 Role Variables
 --------------
