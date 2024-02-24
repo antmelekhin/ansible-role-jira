@@ -13,9 +13,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - distro: 'debian-11'
-          - distro: 'rockylinux-8'
-          - distro: 'ubuntu-20.04'
+          - distro: 'debian-12'
+          - distro: 'rockylinux-9'
+          - distro: 'ubuntu-22.04'
 
     steps:
       - name: 'Checkout the codebase'
