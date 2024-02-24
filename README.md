@@ -81,7 +81,6 @@ Example Playbook
 
     ```yaml
     ---
-
     - name: Setup Jira
       hosts: jira
       vars:
@@ -90,7 +89,7 @@ Example Playbook
         db_password: 'P@ssw0rd!'
 
     roles:
-      - role: geerlingguy.java
+      - role: antmelekhin.java
       - role: geerlingguy.postgresql
         postgresql_users:
           - name: '{{ db_username }}'
