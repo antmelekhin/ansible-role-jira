@@ -1,7 +1,7 @@
 Jira
 ====
 
-An Ansible role for install, configure and update [Jira](https://www.atlassian.com/ru/software/jira).
+An Ansible role to install, configure and update [Jira](https://www.atlassian.com/ru/software/jira).
 
 Requirements
 ------------

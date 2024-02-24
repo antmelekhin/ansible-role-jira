@@ -2,7 +2,7 @@
 galaxy_info:
   author: antmelekhin
   role_name: jira
-  description: An Ansible role for install, configure and update Jira.
+  description: An Ansible role to install, configure and update Jira.
 
   license: MIT
 
