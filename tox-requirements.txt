@@ -1,0 +1,3 @@
+ansible-lint == 6.*
+molecule == 5.*
+molecule-plugins[docker] == 23.*

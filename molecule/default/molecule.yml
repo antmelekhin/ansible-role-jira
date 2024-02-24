@@ -10,8 +10,8 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  - name: instance
-    image: 'antmelekhin/docker-systemd:${MOLECULE_DISTRO:-ubuntu-20.04}'
+  - name: '${IMAGE:-docker-systemd}-${TAG:-ubuntu-22.04}${TOX_ENVNAME}'
+    image: '${NAMESPACE:-antmelekhin}/${IMAGE:-docker-systemd}:${TAG:-ubuntu-22.04}'
     published_ports:
       - 0.0.0.0:8080:8080/udp
       - 0.0.0.0:8080:8080/tcp
