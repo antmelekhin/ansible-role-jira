@@ -1,5 +1,5 @@
 ---
-- name: 'Prepare for install Jira'
+- name: 'Prepare to install Jira'
   become: true
   block:
     - name: 'Install fontconfig'
@@ -17,7 +17,6 @@
         group: '{{ jira_group }}'
         comment: 'Atlassian JIRA'
         shell: /bin/bash
-      register: _jira_user_result
 
     - name: 'Create Jira directories'
       ansible.builtin.file:

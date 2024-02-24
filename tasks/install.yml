@@ -4,13 +4,13 @@
     cmd: grep -Po '(?<=^version=)\N*$' '{{ _jira_application_path }}/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties'
   failed_when: false
   changed_when: false
-  register: _jira_version_check
+  register: __jira_version_check
 
 - name: 'Download and unarchive Jira'
   when:
     - not ansible_check_mode
-    - _jira_version_check.stdout is not defined or
-      jira_version not in _jira_version_check.stdout
+    - __jira_version_check.stdout is not defined or
+      jira_version not in __jira_version_check.stdout
   block:
     - name: 'Download Jira archive to local folder'
       ansible.builtin.get_url:
