@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: 'Checkout the codebase'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 'Test role'
         uses: gofrolist/molecule-action@v2
