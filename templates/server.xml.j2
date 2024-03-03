@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+{{ ansible_managed | comment('xml') }}
+
 <!--
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
@@ -16,7 +19,6 @@
   limitations under the License.
 -->
 
-{{ ansible_managed | comment('xml') }}
 <Server port="8005" shutdown="SHUTDOWN">
     <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
     <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on"/>
