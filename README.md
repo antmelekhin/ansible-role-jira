@@ -30,8 +30,8 @@ Role Variables
   - `software` (default)
   - `core`
 
-- `jira_version` The specific version of Jira to download (default: `9.12.0`).
-- `jira_archive_name` Jira archive name (default: `atlassian-jira-software-9.12.0.tar.gz`).
+- `jira_version` The specific version of Jira to download (default: `null`).
+- `jira_archive_name` Jira archive name (default: `atlassian-jira-software-null.tar.gz`).
 - `jira_download_url` URL to download an archive with Jira (default: `https://www.atlassian.com/software/jira/downloads/binary`).
 - `jira_username` and `jira_group` Unix username and group (default: `jira`).
 - `jira_root_path` Path to Jira installation directory (default: `/opt/atlassian/jira`).

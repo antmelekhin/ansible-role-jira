@@ -1,6 +1,6 @@
 ---
 jira_product: 'software'
-jira_version: '9.12.0'
+jira_version: 'null'
 jira_archive_name: 'atlassian-jira-{{ jira_product }}-{{ jira_version }}.tar.gz'
 jira_download_url: 'https://www.atlassian.com/software/jira/downloads/binary'
 
