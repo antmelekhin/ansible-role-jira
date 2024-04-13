@@ -20,6 +20,11 @@ URL='https://my.atlassian.com/download/feeds/current/jira-software.json'
 APP_JSON="$(curl --silent $URL | sed -e 's/downloads//' -e 's/[()]//g' | jq '[ .[] | select((.edition == "Enterprise") and (.platform == "Mac OS X, Unix")) ]' | jq 'max_by(.version)')"
 LATEST_VERSION="$(echo $APP_JSON | jq -r '.version')"
 
+# Validate latest version
+if ! [[ $LATEST_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
+   echo "error: ${LATEST_VERSION} is not a valid Semantic Version" >&2; exit 1
+fi
+
 # Compare current and latest versions
 if [[ $CURRENT_VERSION == $LATEST_VERSION ]]; then
     echo -e "${GREEN}Newest version is used.${NO_COLOR}"
