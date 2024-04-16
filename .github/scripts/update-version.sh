@@ -22,7 +22,7 @@ LATEST_VERSION="$(echo $APP_JSON | jq -r '.version')"
 
 # Validate latest version
 if ! [[ $LATEST_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] ; then
-   echo "error: ${LATEST_VERSION} is not a valid Semantic Version" >&2; exit 1
+   echo "error: ${LATEST_VERSION} is not a valid Semantic Version" >&2; exit 0
 fi
 
 # Compare current and latest versions
