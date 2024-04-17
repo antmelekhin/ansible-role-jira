@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: 'Test'
+    name: 'Molecule'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,9 +19,9 @@ jobs:
 
     steps:
       - name: 'Checkout the codebase'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: 'Test role'
+      - name: 'Testing an Ansible role with Molecule'
         uses: gofrolist/molecule-action@v2
         with:
           molecule_command: test
