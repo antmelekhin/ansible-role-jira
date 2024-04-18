@@ -24,7 +24,7 @@
         src: '/tmp/{{ jira_archive_name }}'
         dest: '{{ _jira_install_path }}'
         owner: '{{ jira_username }}'
-        group: '{{ jira_group }}'
+        group: '{{ jira_usergroup }}'
         extra_opts:
           - --strip-components=1
       become: true
@@ -33,6 +33,6 @@
   ansible.builtin.file:
     src: '{{ _jira_install_path }}'
     dest: '{{ _jira_application_path }}'
-    state: link
+    state: 'link'
   when: not ansible_check_mode
   become: true
