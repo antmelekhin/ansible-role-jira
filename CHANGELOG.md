@@ -1,5 +1,39 @@
 # Changelog
 
+## [1.1.2](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.1...v1.1.2) (2024-04-18)
+
+
+### Code Refactoring
+
+* update variable names and quote strings ([#12](https://github.com/antmelekhin/ansible-role-jira/issues/12)) ([5d47b4e](https://github.com/antmelekhin/ansible-role-jira/commit/5d47b4efc95a1489e9374466b165de12fee09a28))
+
+
+### Continuous Integration
+
+* add semantic version validation ([e63933c](https://github.com/antmelekhin/ansible-role-jira/commit/e63933cbcd801b1915220adc1585155f6445c0f1))
+* fix exit code ([4ab8950](https://github.com/antmelekhin/ansible-role-jira/commit/4ab895083e4a9ec19d07efd0c50f6786a0e5ed05))
+* update `checkout` action version ([1ba3949](https://github.com/antmelekhin/ansible-role-jira/commit/1ba3949fe9c272d848c3a0b9b4e65a78e982f68b))
+* update release rules ([e11d015](https://github.com/antmelekhin/ansible-role-jira/commit/e11d015e59d606367f3c05042e00495f586dc18f))
+* update test matrix ([002c264](https://github.com/antmelekhin/ansible-role-jira/commit/002c26416da1b994f8a85aa1e74b10dc3b6d682a))
+* update workflows ([ce45063](https://github.com/antmelekhin/ansible-role-jira/commit/ce450632d42965558b59e73e297ba363605d2d03))
+
+
+### Documentation
+
+* update supported os versions ([de210c6](https://github.com/antmelekhin/ansible-role-jira/commit/de210c6df6bc416e3634cb54630b9e1c027b6108))
+
+
+### Styles
+
+* add empty line after ansible comment ([f1eb8d4](https://github.com/antmelekhin/ansible-role-jira/commit/f1eb8d4475940684d628b5751bca5e3ed8b4f7e2))
+* rename some task names and minor changes ([#10](https://github.com/antmelekhin/ansible-role-jira/issues/10)) ([3c8e744](https://github.com/antmelekhin/ansible-role-jira/commit/3c8e7443365bbe1596d2891f898d8fe4e7614357))
+
+
+### Tests
+
+* add tox ([f2a639a](https://github.com/antmelekhin/ansible-role-jira/commit/f2a639a857c5a989476f69c942b01e6b76033111))
+* use my java ansible role ([3aad8ff](https://github.com/antmelekhin/ansible-role-jira/commit/3aad8ff7320a67212f8fe21f388a7e5e8ea7f4e6))
+
 ## [1.1.1](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.0...v1.1.1) (2023-12-06)
 
 
