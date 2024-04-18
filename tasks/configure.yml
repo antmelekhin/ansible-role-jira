@@ -41,7 +41,7 @@
 
     - name: 'Ensure Jira is running and enabled at boot'
       ansible.builtin.systemd:
-        name: jira
-        state: started
+        name: 'jira'
+        state: 'started'
         enabled: true
       when: not ansible_check_mode

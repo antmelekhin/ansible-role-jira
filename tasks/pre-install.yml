@@ -4,8 +4,8 @@
   block:
     - name: 'Install fontconfig'
       ansible.builtin.package:
-        name: fontconfig
-        state: present
+        name: 'fontconfig'
+        state: 'present'
 
     - name: 'Create Jira group'
       ansible.builtin.group:
@@ -16,14 +16,14 @@
         name: '{{ jira_username }}'
         group: '{{ jira_group }}'
         comment: 'Atlassian JIRA'
-        shell: /bin/bash
+        shell: '/bin/bash'
 
     - name: 'Create Jira directories'
       ansible.builtin.file:
         path: '{{ jira_path }}'
         owner: '{{ jira_username }}'
         group: '{{ jira_group }}'
-        state: directory
+        state: 'directory'
         mode: 0755
       loop:
         - '{{ _jira_install_path }}'

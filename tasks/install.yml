@@ -33,6 +33,6 @@
   ansible.builtin.file:
     src: '{{ _jira_install_path }}'
     dest: '{{ _jira_application_path }}'
-    state: link
+    state: 'link'
   when: not ansible_check_mode
   become: true

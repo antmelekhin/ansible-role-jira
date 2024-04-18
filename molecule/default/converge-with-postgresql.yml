@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: 'Converge'
   hosts: all
   vars:
     db_name: 'jira'

@@ -1,8 +1,8 @@
 ---
 - name: 'Restart Jira'
   ansible.builtin.systemd:
-    name: jira
+    name: 'jira'
     daemon_reload: true
-    state: restarted
+    state: 'restarted'
   when: not ansible_check_mode
   become: true
