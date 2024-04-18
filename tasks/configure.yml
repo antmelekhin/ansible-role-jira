@@ -7,7 +7,7 @@
         src: 'jira.service.j2'
         dest: '/etc/systemd/system/jira.service'
         owner: '{{ jira_username }}'
-        group: '{{ jira_group }}'
+        group: '{{ jira_usergroup }}'
         mode: 0644
       notify: 'Restart Jira'
 
@@ -16,7 +16,7 @@
         src: 'server.xml.j2'
         dest: '{{ _jira_application_path }}/conf/server.xml'
         owner: '{{ jira_username }}'
-        group: '{{ jira_group }}'
+        group: '{{ jira_usergroup }}'
         mode: 0644
       notify: 'Restart Jira'
 
@@ -25,7 +25,7 @@
         src: 'setenv.sh.j2'
         dest: '{{ _jira_application_path }}/bin/setenv.sh'
         owner: '{{ jira_username }}'
-        group: '{{ jira_group }}'
+        group: '{{ jira_usergroup }}'
         mode: 0755
       notify: 'Restart Jira'
 
@@ -34,7 +34,7 @@
         src: 'dbconfig.xml.j2'
         dest: '{{ jira_home_path }}/dbconfig.xml'
         owner: '{{ jira_username }}'
-        group: '{{ jira_group }}'
+        group: '{{ jira_usergroup }}'
         mode: 0600
       notify: 'Restart Jira'
       when: jira_db_configuration | bool

@@ -24,7 +24,7 @@
         src: '/tmp/{{ jira_archive_name }}'
         dest: '{{ _jira_install_path }}'
         owner: '{{ jira_username }}'
-        group: '{{ jira_group }}'
+        group: '{{ jira_usergroup }}'
         extra_opts:
           - --strip-components=1
       become: true
