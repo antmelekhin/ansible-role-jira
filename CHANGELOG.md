@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.3](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.2...v1.1.3) (2024-04-19)
+
+
+### Documentation
+
+* **READEME:** fix variable name ([4296a58](https://github.com/antmelekhin/ansible-role-jira/commit/4296a58aedb77b882aa8a2edbd486c6e0652404d))
+
+
+### Fixes
+
+* **version:** jira updated to 9.12.7 release ([dfc74a2](https://github.com/antmelekhin/ansible-role-jira/commit/dfc74a24a082dc484a24a75ddd21eee1860f41cb))
+
 ## [1.1.2](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.1...v1.1.2) (2024-04-18)
 
 
