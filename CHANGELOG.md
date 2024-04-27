@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.1.4](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.3...v1.1.4) (2024-04-27)
+
+
+### Documentation
+
+* **README:** fixed examples view for Ansible Galaxy ([82e26fd](https://github.com/antmelekhin/ansible-role-jira/commit/82e26fdf15ba2e92f91183fd68e7f80adf8c60ef))
+
+
+### Fixes
+
+* fixed running a role in check_mode ([d52891d](https://github.com/antmelekhin/ansible-role-jira/commit/d52891d0c920ef0f61c25d4f15cf1f9e841c86fd))
+
+
+### Styles
+
+* add newline to end of file ([d6173e6](https://github.com/antmelekhin/ansible-role-jira/commit/d6173e6cc42b7fb632c1f458f8ed750ba09f3220))
+* trim trailing whitespace ([be99723](https://github.com/antmelekhin/ansible-role-jira/commit/be997238f88e21a04af76ef5fb9421cc9d352be6))
+* update `jira_user` and `jira_group` variables ([db3a0c9](https://github.com/antmelekhin/ansible-role-jira/commit/db3a0c9354904274dd1bb9be57c6c1d8f845547f))
+* use double underline regiter variable ([1964213](https://github.com/antmelekhin/ansible-role-jira/commit/196421310b818d5e70fc6d907b9ffee096d0e470))
+
+
+### Tests
+
+* add .tox as ignore ([20abe49](https://github.com/antmelekhin/ansible-role-jira/commit/20abe49bc7643394e16df0f2435abc35f0d65297))
+* add role_name prefix to instance name ([a0ea9b5](https://github.com/antmelekhin/ansible-role-jira/commit/a0ea9b5ca3259104976315925ae4d303eb588cfb))
+* run linters in its own workflow ([a56d6bd](https://github.com/antmelekhin/ansible-role-jira/commit/a56d6bdda209aadc12b552d79648cc4b76d9f75b))
+
 ## [1.1.3](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.2...v1.1.3) (2024-04-19)
 
 
