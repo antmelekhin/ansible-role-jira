@@ -18,8 +18,8 @@
     - name: 'Check url'
       ansible.builtin.uri:
         url: 'http://{{ ansible_host }}:8080'
-      register: _result
-      until: _result.status == 200
+      register: __result
+      until: __result.status == 200
       retries: 120
       delay: 5
 
@@ -27,8 +27,8 @@
       ansible.builtin.command:
         cmd: grep -Po '(?<=^version=)\N*$' '{{ jira_path }}/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties'
       changed_when: false
-      register: _jira_version_check
+      register: __jira_version_check
 
     - name: 'Version output'
       ansible.builtin.debug:
-        var: _jira_version_check.stdout
+        var: __jira_version_check.stdout
