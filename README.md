@@ -69,46 +69,46 @@ This role doesn't install `java`, reverse proxy (`apache` or `nginx`) and DB man
 Example Playbook
 ----------------
 
-- Install `Jira` with dependencies (`Java` and `PostgreSQL`):
+Install `Jira` with dependencies (`Java` and `PostgreSQL`):
 
-  - Install dependencies:
+Install dependencies:
 
-    ```bash
-    ansible-galaxy install -r requirements.yml
-    ```
+```bash
+ansible-galaxy install -r requirements.yml
+```
 
-  - Run playbook:
+Run playbook:
 
-    ```yaml
-    ---
-    - name: Setup Jira
-      hosts: jira
-      vars:
-        db_name: 'jira'
-        db_username: 'jira'
-        db_password: 'P@ssw0rd!'
+```yaml
+---
+- name: Setup Jira
+  hosts: jira
+  vars:
+    db_name: 'jira'
+    db_username: 'jira'
+    db_password: 'P@ssw0rd!'
 
-    roles:
-      - role: antmelekhin.java
-      - role: geerlingguy.postgresql
-        postgresql_users:
-          - name: '{{ db_username }}'
-            password: '{{ db_password }}'
-        postgresql_databases:
-          - name: '{{ db_name }}'
-            lc_collate: 'en_US.UTF-8'
-            lc_ctype: 'en_US.UTF-8'
-            encoding: 'UTF-8'
-            template: 'template0'
-            owner: '{{ db_username }}'
-      - role: antmelekhin.jira
-        jira_db_configuration: true
-        jira_db_address: 127.0.0.1
-        jira_db_port: 5432
-        jira_db_name: '{{ db_name }}'
-        jira_db_username: '{{ db_username }}'
-        jira_db_password: '{{ db_password }}'
-    ```
+roles:
+  - role: antmelekhin.java
+  - role: geerlingguy.postgresql
+    postgresql_users:
+      - name: '{{ db_username }}'
+        password: '{{ db_password }}'
+    postgresql_databases:
+      - name: '{{ db_name }}'
+        lc_collate: 'en_US.UTF-8'
+        lc_ctype: 'en_US.UTF-8'
+        encoding: 'UTF-8'
+        template: 'template0'
+        owner: '{{ db_username }}'
+  - role: antmelekhin.jira
+    jira_db_configuration: true
+    jira_db_address: 127.0.0.1
+    jira_db_port: 5432
+    jira_db_name: '{{ db_name }}'
+    jira_db_username: '{{ db_username }}'
+    jira_db_password: '{{ db_password }}'
+```
 
 License
 -------
