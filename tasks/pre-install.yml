@@ -2,10 +2,20 @@
 - name: 'Prepare to install Jira'
   become: true
   block:
-    - name: 'Install fontconfig'
+    - name: 'Debian | Install fontconfig'
+      ansible.builtin.apt:
+        name: 'fontconfig'
+        update_cache: true
+        state: 'present'
+      when:
+        - not ansible_check_mode
+        - ansible_os_family == 'Debian'
+
+    - name: 'RedHat | Install fontconfig'
       ansible.builtin.package:
         name: 'fontconfig'
         state: 'present'
+      when: ansible_os_family == 'RedHat'
 
     - name: 'Create Jira group'
       ansible.builtin.group:
