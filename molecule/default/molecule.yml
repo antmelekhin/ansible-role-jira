@@ -5,10 +5,6 @@ dependency:
   enabled: true
 driver:
   name: docker
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
 platforms:
   - name: 'jira-${IMAGE:-docker-systemd}-${TAG:-ubuntu-22.04}${TOX_ENVNAME}'
     image: '${NAMESPACE:-antmelekhin}/${IMAGE:-docker-systemd}:${TAG:-ubuntu-22.04}'
