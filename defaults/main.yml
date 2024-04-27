@@ -5,8 +5,8 @@ jira_archive_name: 'atlassian-jira-{{ jira_product }}-{{ jira_version }}.tar.gz'
 jira_download_url: 'https://www.atlassian.com/software/jira/downloads/binary'
 
 # Jira user.
-jira_username: 'jira'
-jira_usergroup: '{{ jira_username }}'
+jira_user: 'jira'
+jira_group: '{{ jira_user }}'
 
 # Jira directories.
 jira_root_path: '/opt/atlassian/jira'

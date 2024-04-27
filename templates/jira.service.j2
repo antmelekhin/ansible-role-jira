@@ -6,7 +6,7 @@ After=network.target
 
 [Service]
 Type=forking
-User={{ jira_username }}
+User={{ jira_user }}
 PIDFile={{ _jira_application_path }}/work/catalina.pid
 ExecStart={{ _jira_application_path }}/bin/start-jira.sh
 ExecStop={{ _jira_application_path }}/bin/stop-jira.sh

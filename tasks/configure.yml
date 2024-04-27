@@ -6,8 +6,8 @@
       ansible.builtin.template:
         src: 'jira.service.j2'
         dest: '/etc/systemd/system/jira.service'
-        owner: '{{ jira_username }}'
-        group: '{{ jira_usergroup }}'
+        owner: '{{ jira_user }}'
+        group: '{{ jira_group }}'
         mode: 0644
       notify: 'Restart Jira'
 
@@ -15,8 +15,8 @@
       ansible.builtin.template:
         src: 'server.xml.j2'
         dest: '{{ _jira_application_path }}/conf/server.xml'
-        owner: '{{ jira_username }}'
-        group: '{{ jira_usergroup }}'
+        owner: '{{ jira_user }}'
+        group: '{{ jira_group }}'
         mode: 0644
       notify: 'Restart Jira'
 
@@ -24,8 +24,8 @@
       ansible.builtin.template:
         src: 'setenv.sh.j2'
         dest: '{{ _jira_application_path }}/bin/setenv.sh'
-        owner: '{{ jira_username }}'
-        group: '{{ jira_usergroup }}'
+        owner: '{{ jira_user }}'
+        group: '{{ jira_group }}'
         mode: 0755
       notify: 'Restart Jira'
 
@@ -33,8 +33,8 @@
       ansible.builtin.template:
         src: 'dbconfig.xml.j2'
         dest: '{{ jira_home_path }}/dbconfig.xml'
-        owner: '{{ jira_username }}'
-        group: '{{ jira_usergroup }}'
+        owner: '{{ jira_user }}'
+        group: '{{ jira_group }}'
         mode: 0600
       notify: 'Restart Jira'
       when: jira_db_configuration | bool
