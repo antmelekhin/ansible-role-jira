@@ -2,7 +2,7 @@
 - name: 'Configure and start Jira'
   become: true
   block:
-    - name: 'Create Jira unit for SystemD'
+    - name: 'Create a Jira systemd service'
       ansible.builtin.template:
         src: 'jira.service.j2'
         dest: '/etc/systemd/system/jira.service'
@@ -11,7 +11,7 @@
         mode: 0644
       notify: 'Restart Jira'
 
-    - name: 'Configure Jira server'
+    - name: 'Configure the Jira server settings'
       ansible.builtin.template:
         src: 'server.xml.j2'
         dest: '{{ _jira_application_path }}/conf/server.xml'
@@ -20,7 +20,7 @@
         mode: 0644
       notify: 'Restart Jira'
 
-    - name: 'Configure Jira environment'
+    - name: 'Configure the Jira environment'
       ansible.builtin.template:
         src: 'setenv.sh.j2'
         dest: '{{ _jira_application_path }}/bin/setenv.sh'
@@ -29,7 +29,7 @@
         mode: 0755
       notify: 'Restart Jira'
 
-    - name: 'Configure Jira database connection'
+    - name: 'Configure the Jira database connection'
       ansible.builtin.template:
         src: 'dbconfig.xml.j2'
         dest: '{{ jira_home_path }}/dbconfig.xml'

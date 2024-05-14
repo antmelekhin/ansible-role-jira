@@ -17,11 +17,11 @@
         state: 'present'
       when: ansible_os_family == 'RedHat'
 
-    - name: 'Create Jira group'
+    - name: 'Create a Jira group'
       ansible.builtin.group:
         name: '{{ jira_group }}'
 
-    - name: 'Create Jira user'
+    - name: 'Create a Jira user'
       ansible.builtin.user:
         name: '{{ jira_user }}'
         group: '{{ jira_group }}'

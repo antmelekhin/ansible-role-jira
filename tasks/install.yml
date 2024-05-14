@@ -1,5 +1,5 @@
 ---
-- name: 'Check current Jira version'
+- name: 'Check the current Jira version'
   ansible.builtin.command:
     cmd: grep -Po '(?<=^version=)\N*$' '{{ _jira_application_path }}/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties'
   failed_when: false
@@ -12,7 +12,7 @@
     - __jira_version_check.stdout is not defined or
       jira_version not in __jira_version_check.stdout
   block:
-    - name: 'Download Jira archive to local folder'
+    - name: 'Download the Jira archive to a local folder'
       ansible.builtin.get_url:
         url: '{{ jira_download_url }}/{{ jira_archive_name }}'
         dest: '/tmp/{{ jira_archive_name }}'
@@ -29,7 +29,7 @@
           - --strip-components=1
       become: true
 
-- name: 'Create symbolic link for Jira'
+- name: 'Create a symbolic link to Jira'
   ansible.builtin.file:
     src: '{{ _jira_install_path }}'
     dest: '{{ _jira_application_path }}'
