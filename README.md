@@ -32,8 +32,8 @@ Variables used to install Jira:
   - `software` (default)
   - `core`
 
-- `jira_version` The version of Jira to download (default: `9.12.0`).
-- `jira_archive_name` Jira archive name (default: `atlassian-jira-software-9.12.0.tar.gz`).
+- `jira_version` The version of Jira to download (default: `9.12.8`).
+- `jira_archive_name` Jira archive name (default: `atlassian-jira-software-9.12.8.tar.gz`).
 - `jira_download_url` URL to download the Jira archive (default: `https://www.atlassian.com/software/jira/downloads/binary`).
 
 Variables used to configure Jira:
