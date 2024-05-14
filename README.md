@@ -24,18 +24,23 @@ Requirements
 Role Variables
 --------------
 
+Variables used to install Jira:
+
 - `jira_product` Jira product.
 
   Available values:
   - `software` (default)
   - `core`
 
-- `jira_version` The specific version of Jira to download (default: `9.12.0`).
+- `jira_version` The version of Jira to download (default: `9.12.0`).
 - `jira_archive_name` Jira archive name (default: `atlassian-jira-software-9.12.0.tar.gz`).
-- `jira_download_url` URL to download an archive with Jira (default: `https://www.atlassian.com/software/jira/downloads/binary`).
+- `jira_download_url` URL to download the Jira archive (default: `https://www.atlassian.com/software/jira/downloads/binary`).
+
+Variables used to configure Jira:
+
 - `jira_user` and `jira_group` Unix user and group that will be created (default: `jira`).
-- `jira_root_path` Path to Jira installation directory (default: `/opt/atlassian/jira`).
-- `jira_home_path` Path to Jira home directory (default: `/var/atlassian/application-data/jira`).
+- `jira_root_path` The Jira installation directory (default: `/opt/atlassian/jira`).
+- `jira_home_path` The Jira home directory (default: `/var/atlassian/application-data/jira`).
 - `jira_min_nofiles_limit` If the limit of files that Jira can open is too low, it will be set to this value (default: `16384`).
 - `jira_jvm_support_recommends_args` Occasionally Atlassian Support may recommend that you set some specific JVM arguments (default: `null`).
 - `jira_jvm_gc_args` You can use variable below to modify garbage collector settings (default: `-XX:+ExplicitGCInvokesConcurrent`).
@@ -64,12 +69,12 @@ Role Variables
 Dependencies
 ------------
 
-This role doesn't install `java`, reverse proxy (`apache` or `nginx`) and DB management system. You'll need to install packages before using.
+This role doesn't install a `Java` package, a reverse proxy (`Apache` or `Nginx`), or a database management system. You will need to install these packages before using the role.
 
 Example Playbook
 ----------------
 
-Install `Jira` with dependencies (`Java` and `PostgreSQL`):
+Install Jira with dependencies (`Java` and `PostgreSQL`):
 
 Install dependencies:
 
