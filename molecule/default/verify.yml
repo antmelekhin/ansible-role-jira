@@ -9,26 +9,26 @@
     - name: 'Gathering Service Facts'
       ansible.builtin.service_facts:
 
-    - name: 'Assert that jira service is enabled and running'
+    - name: 'Assert that Jira service is enabled and running'
       ansible.builtin.assert:
         that:
           - ansible_facts.services['jira.service'].state == 'running'
           - ansible_facts.services['jira.service'].status == 'enabled'
 
-    - name: 'Check url'
+    - name: 'Verify the Jira host is responding to requests'
       ansible.builtin.uri:
         url: 'http://{{ ansible_host }}:8080'
-      register: __result
-      until: __result.status == 200
+      register: __jira_response
+      until: __jira_response.status == 200
       retries: 120
       delay: 5
 
-    - name: 'Check current Jira version'
+    - name: 'Check the current Jira version'
       ansible.builtin.command:
         cmd: grep -Po '(?<=^version=)\N*$' '{{ jira_path }}/atlassian-jira/META-INF/maven/com.atlassian.jira/jira-webapp-dist/pom.properties'
       changed_when: false
       register: __jira_version_check
 
-    - name: 'Version output'
+    - name: 'Jira version output'
       ansible.builtin.debug:
         var: __jira_version_check.stdout
