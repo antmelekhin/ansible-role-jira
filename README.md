@@ -24,21 +24,12 @@ Requirements
 Role Variables
 --------------
 
-Variables used to install Jira:
-
-- `jira_product` Jira product.
-
-  Available values:
-  - `software` (default)
-  - `core`
-
+- `jira_product` Jira product. Available values are: `software` (default), `core`.
 - `jira_version` The version of Jira to download (default: `9.12.8`).
 - `jira_archive_name` Jira archive name (default: `atlassian-jira-software-9.12.8.tar.gz`).
 - `jira_download_url` URL to download the Jira archive (default: `https://www.atlassian.com/software/jira/downloads/binary`).
-
-Variables used to configure Jira:
-
-- `jira_user` and `jira_group` Unix user and group that will be created (default: `jira`).
+- `jira_download_path` Local path to download and extract the archive (default: `/tmp`).
+- `jira_user` and `jira_group` System user and group that will be created (default: `jira`).
 - `jira_root_path` The Jira installation directory (default: `/opt/atlassian/jira`).
 - `jira_home_path` The Jira home directory (default: `/var/atlassian/application-data/jira`).
 - `jira_min_nofiles_limit` If the limit of files that Jira can open is too low, it will be set to this value (default: `16384`).
@@ -48,17 +39,12 @@ Variables used to configure Jira:
 - `jira_jvm_initial_code_cache_size` and `jira_jvm_reserved_code_cache_size` The size of JVM code cache (default: `32m` and `512m`). A high value of reserved size allows Jira to work with more installed apps.
 - `jira_jvm_required_args` The following are the required arguments for Jira.
 - `jira_db_configuration` DB connection configuration (default: `false`).
-- `jira_db_address` IP address or DNS name of DB server.
-- `jira_db_port` DB port.
+- `jira_db_address` Hostname or IP address of your database server.
+- `jira_db_port` TCP port number for your database server.
 - `jira_db_name` DB name.
-- `jira_db_username` DB username.
-- `jira_db_password` DB password.
+- `jira_db_username` and `jira_db_password` Database username and password to be passed to the JDBC driver.
 - `jira_catalina_connector_proxyname` Fqdn server name. If you don't use a reverse proxy, then you'll need to leave this variable without value.
-- `jira_catalina_connector_scheme` Connection scheme.
-
-  Available values:
-  - `http` (default)
-  - `https`
+- `jira_catalina_connector_scheme` Connection scheme. Available values are: `http` (default), `https`.
 
     **Attention** If you use `https` value, you'll need to install SSL sertificate on server with reverse proxy.
 
@@ -108,7 +94,7 @@ roles:
         owner: '{{ db_username }}'
   - role: antmelekhin.jira
     jira_db_configuration: true
-    jira_db_address: 127.0.0.1
+    jira_db_host: 127.0.0.1
     jira_db_port: 5432
     jira_db_name: '{{ db_name }}'
     jira_db_username: '{{ db_username }}'
