@@ -1,33 +1,33 @@
 ---
 galaxy_info:
-  author: antmelekhin
-  role_name: jira
-  description: An Ansible role to install, configure and update Jira.
+  author: 'antmelekhin'
+  role_name: 'jira'
+  description: 'An Ansible role to install, configure and update Jira.'
 
-  license: MIT
+  license: 'MIT'
 
   min_ansible_version: '2.9'
 
   platforms:
-    - name: Debian
+    - name: 'Debian'
       versions:
         - 'buster'
         - 'bullseye'
         - 'bookworm'
-    - name: EL
+    - name: 'EL'
       versions:
         - '7'
         - '8'
         - '9'
-    - name: Ubuntu
+    - name: 'Ubuntu'
       versions:
         - 'bionic'
         - 'focal'
         - 'jammy'
 
   galaxy_tags:
-    - atlassian
-    - jira
-    - issuetracker
+    - 'atlassian'
+    - 'issuetracker'
+    - 'jira'
 
 dependencies: []
