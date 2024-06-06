@@ -24,6 +24,11 @@ jira_jvm_reserved_code_cache_size: '512m'
 
 # The Jira database connection settings
 jira_db_configuration: false
+jira_db_host: ''
+jira_db_port: ''
+jira_db_name: ''
+jira_db_username: ''
+jira_db_password: ''
 
 # The Jira proxy settings
 jira_catalina_connector_proxyname: ''
