@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.5...v1.2.0) (2024-06-06)
+
+
+### Improvements
+
+* update variables and common role style ([#13](https://github.com/antmelekhin/ansible-role-jira/issues/13)) ([40956b1](https://github.com/antmelekhin/ansible-role-jira/commit/40956b1514c6fe3b29e7e1970d479afb98731032))
+
 ## [1.1.5](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.4...v1.1.5) (2024-05-14)
 
 
