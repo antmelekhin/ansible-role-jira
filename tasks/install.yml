@@ -15,21 +15,21 @@
     - name: 'Download the Jira archive to a local folder'
       ansible.builtin.get_url:
         url: '{{ jira_download_url }}/{{ jira_archive_name }}'
-        dest: '/tmp/{{ jira_archive_name }}'
+        dest: '{{ jira_download_path }}/{{ jira_archive_name }}'
         mode: 0644
       delegate_to: localhost
 
     - name: 'Unarchive Jira'
       ansible.builtin.unarchive:
-        src: '/tmp/{{ jira_archive_name }}'
+        src: '{{ jira_download_path }}/{{ jira_archive_name }}'
         dest: '{{ _jira_install_path }}'
         owner: '{{ jira_user }}'
         group: '{{ jira_group }}'
         extra_opts:
-          - --strip-components=1
+          - '--strip-components=1'
       become: true
 
-- name: 'Create a symbolic link to Jira'
+- name: 'Create the symbolic link to Jira installation path'
   ansible.builtin.file:
     src: '{{ _jira_install_path }}'
     dest: '{{ _jira_application_path }}'

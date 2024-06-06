@@ -21,7 +21,7 @@
           owner: '{{ db_username }}'
     - role: antmelekhin.jira
       jira_db_configuration: true
-      jira_db_address: 127.0.0.1
+      jira_db_host: 'localhost'
       jira_db_port: 5432
       jira_db_name: '{{ db_name }}'
       jira_db_username: '{{ db_username }}'

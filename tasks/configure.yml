@@ -2,7 +2,7 @@
 - name: 'Configure and start Jira'
   become: true
   block:
-    - name: 'Create a Jira systemd service'
+    - name: 'Create the Jira systemd service'
       ansible.builtin.template:
         src: 'jira.service.j2'
         dest: '/etc/systemd/system/jira.service'

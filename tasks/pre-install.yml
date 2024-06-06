@@ -1,5 +1,5 @@
 ---
-- name: 'Prepare to install Jira'
+- name: 'Prepare for installing Jira'
   become: true
   block:
     - name: 'Debian | Install fontconfig'
