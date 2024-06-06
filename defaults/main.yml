@@ -3,16 +3,17 @@ jira_product: 'software'
 jira_version: '9.12.8'
 jira_archive_name: 'atlassian-jira-{{ jira_product }}-{{ jira_version }}.tar.gz'
 jira_download_url: 'https://www.atlassian.com/software/jira/downloads/binary'
+jira_download_path: '/tmp'
 
-# Jira user.
+# The Jira user and group
 jira_user: 'jira'
 jira_group: '{{ jira_user }}'
 
-# Jira directories.
+# The Jira directories
 jira_root_path: '/opt/atlassian/jira'
 jira_home_path: '/var/atlassian/application-data/jira'
 
-# Jira environment configuration.
+# The Jira environment configuration
 jira_min_nofiles_limit: 16384
 jira_jvm_support_recommends_args: ''
 jira_jvm_gc_args: '-XX:+ExplicitGCInvokesConcurrent'
@@ -21,10 +22,10 @@ jira_jvm_maximum_memory: '2048m'
 jira_jvm_initial_code_cache_size: '32m'
 jira_jvm_reserved_code_cache_size: '512m'
 
-# Jira database connection settings.
+# The Jira database connection settings
 jira_db_configuration: false
 
-# Jira proxy settings.
+# The Jira proxy settings
 jira_catalina_connector_proxyname: ''
 jira_catalina_connector_scheme: 'http'
 jira_catalina_connector_proxyport: '{{ (jira_catalina_connector_scheme | lower == "http") | ternary("80", "443") }}'
