@@ -16,6 +16,7 @@
       ansible.builtin.get_url:
         url: '{{ jira_download_url }}/{{ jira_archive_name }}'
         dest: '{{ jira_download_path }}/{{ jira_archive_name }}'
+        checksum: 'sha256:{{ jira_checksum_url }}'
         mode: 0644
       delegate_to: localhost
 

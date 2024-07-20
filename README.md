@@ -28,6 +28,7 @@ Role Variables
 - `jira_version` The version of Jira to download (default: `9.12.11`).
 - `jira_archive_name` Jira archive name (default: `atlassian-jira-software-9.12.11.tar.gz`).
 - `jira_download_url` URL to download the Jira archive (default: `https://www.atlassian.com/software/jira/downloads/binary`).
+- `jira_checksum_url` The Jira checksum file URL (default: `{{ jira_download_url }}/{{ jira_archive_name }}.sha256`).
 - `jira_download_path` Local path to download and extract the archive (default: `/tmp`).
 - `jira_user` and `jira_group` System user and group that will be created (default: `jira`).
 - `jira_root_path` The Jira installation directory (default: `/opt/atlassian/jira`).

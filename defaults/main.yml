@@ -3,6 +3,7 @@ jira_product: 'software'
 jira_version: '9.12.11'
 jira_archive_name: 'atlassian-jira-{{ jira_product }}-{{ jira_version }}.tar.gz'
 jira_download_url: 'https://www.atlassian.com/software/jira/downloads/binary'
+jira_checksum_url: '{{ jira_download_url }}/{{ jira_archive_name }}.sha256'
 jira_download_path: '/tmp'
 
 # The Jira user and group
