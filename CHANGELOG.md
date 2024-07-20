@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/antmelekhin/ansible-role-jira/compare/v1.2.0...v1.2.1) (2024-07-20)
+
+
+### Fixes
+
+* add `jira_checksum_url` variable ([e557cf8](https://github.com/antmelekhin/ansible-role-jira/commit/e557cf85b0ce8882ba0384499eae307bee857dc5))
+* **version:** jira updated to 9.12.11 release ([e343069](https://github.com/antmelekhin/ansible-role-jira/commit/e343069727df3aceb9e6da9558b2f67b049df0ee))
+
 ## [1.2.0](https://github.com/antmelekhin/ansible-role-jira/compare/v1.1.5...v1.2.0) (2024-06-06)
 
 
