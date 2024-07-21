@@ -31,4 +31,4 @@
 
     - name: 'Jira version output'
       ansible.builtin.debug:
-        var: __jira_version_check.stdout
+        msg: 'The current Jira version is {{ __jira_version_check.stdout }}'
