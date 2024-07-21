@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.2](https://github.com/antmelekhin/ansible-role-jira/compare/v1.2.1...v1.2.2) (2024-07-21)
+
+
+### Fixes
+
+* add tar package as dependency ([da3783c](https://github.com/antmelekhin/ansible-role-jira/commit/da3783c9e47629bfdf9592a4bf0c2582c731656e))
+
+
+### Tests
+
+* clean version output in the default scenario ([a4c051a](https://github.com/antmelekhin/ansible-role-jira/commit/a4c051a992f4a4111843b6a3bb7d1a5ec566d75b))
+
 ## [1.2.1](https://github.com/antmelekhin/ansible-role-jira/compare/v1.2.0...v1.2.1) (2024-07-20)
 
 
