@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/antmelekhin/ansible-role-jira/compare/v1.2.2...v1.3.0) (2024-08-14)
+
+
+### Features
+
+* add `meta/argument_specs.yml` file ([#14](https://github.com/antmelekhin/ansible-role-jira/issues/14)) ([8c9374b](https://github.com/antmelekhin/ansible-role-jira/commit/8c9374b398ded196f512691de98d634b9c31ca9f))
+
 ## [1.2.2](https://github.com/antmelekhin/ansible-role-jira/compare/v1.2.1...v1.2.2) (2024-07-21)
 
 
