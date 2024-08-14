@@ -1,0 +1,117 @@
+---
+argument_specs:
+  main:
+    short_description: 'Jira'
+    description:
+      - 'An Ansible role to install, configure and update L(Jira,https://www.atlassian.com/ru/software/jira).'
+    author:
+      - 'Melekhin Anton'
+    options:
+      jira_product:
+        type: 'str'
+        description: 'Jira product.'
+        choices:
+          - 'core'
+          - 'software'
+        default: 'software'
+      jira_version:
+        type: 'str'
+        description: 'The version of Jira to download.'
+        default: '9.12.11'
+      jira_archive_name:
+        type: 'str'
+        description: 'Jira archive name.'
+        default: 'atlassian-jira-{{ jira_product }}-{{ jira_version }}.tar.gz'
+      jira_download_url:
+        type: 'str'
+        description: 'URL to download the Jira archive.'
+        default: 'https://www.atlassian.com/software/jira/downloads/binary'
+      jira_checksum_url:
+        type: 'str'
+        description: 'The Jira checksum file URL.'
+        default: '{{ jira_download_url }}/{{ jira_archive_name }}.sha256'
+      jira_download_path:
+        type: 'path'
+        description: 'Local path to download and extract the archive.'
+        default: '/tmp'
+      jira_user:
+        type: 'str'
+        description: 'System user that will be created.'
+        default: 'jira'
+      jira_group:
+        type: 'str'
+        description: 'System group that will be created.'
+        default: '{{ jira_user }}'
+      jira_root_path:
+        type: 'path'
+        description: 'The Jira installation directory.'
+        default: '/opt/atlassian/jira'
+      jira_home_path:
+        type: 'path'
+        description: 'The Jira home directory.'
+        default: '/var/atlassian/application-data/jira'
+      jira_min_nofiles_limit:
+        type: 'int'
+        description: 'If the limit of files that Jira can open is too low, it will be set to this value.'
+        default: 16384
+      jira_jvm_support_recommends_args:
+        type: 'str'
+        description: 'Occasionally Atlassian Support may recommend that you set some specific JVM arguments.'
+      jira_jvm_gc_args:
+        type: 'str'
+        description: 'You can use variable below to modify garbage collector settings.'
+        default: '-XX:+ExplicitGCInvokesConcurrent'
+      jira_jvm_minimum_memory:
+        type: 'str'
+        description: 'The minimum size of the heap.'
+        default: '384m'
+      jira_jvm_maximum_memory:
+        type: 'str'
+        description: 'The maximum size of the heap.'
+        default: '2048m'
+      jira_jvm_initial_code_cache_size:
+        type: 'str'
+        description: 'The size of JVM code cache.'
+        default: '32m'
+      jira_jvm_reserved_code_cache_size:
+        type: 'str'
+        description: 'The size of JVM code cache. A high value of reserved size allows Jira to work with more installed apps.'
+        default: '512m'
+      jira_db_configuration:
+        type: 'bool'
+        description: 'DB connection configuration.'
+        default: false
+      jira_db_host:
+        type: 'str'
+        description: 'Hostname or IP address of your database server.'
+      jira_db_port:
+        type: 'str'
+        description: 'TCP port number for your database server.'
+      jira_db_name:
+        type: 'str'
+        description: 'DB name.'
+      jira_db_username:
+        type: 'str'
+        description: 'Database username to be passed to the JDBC driver.'
+      jira_db_password:
+        type: 'str'
+        description: 'Database password to be passed to the JDBC driver.'
+      jira_catalina_connector_proxyname:
+        type: 'str'
+        description: "Fqdn server name. If you don't use a reverse proxy, then you'll need to leave this variable without value."
+      jira_catalina_connector_scheme:
+        type: 'str'
+        description:
+          - 'Connection scheme.'
+          - "If you use C(https) value, you'll need to install SSL sertificate on server with reverse proxy."
+        choices:
+          - 'http'
+          - 'https'
+        default: 'http'
+      jira_catalina_connector_proxyport:
+        type: 'int'
+        description:
+          - 'Server port.'
+          - '80 port sets automatically if value in C(jira_catalina_connector_scheme) variable is C(http).'
+          - '443 port sets automatically if value in C(jira_catalina_connector_scheme) variable is C(https).'
+        default: "{{ (jira_catalina_connector_scheme | lower == 'http') | ternary('80', '443') }}"
