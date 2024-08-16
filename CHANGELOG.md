@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/antmelekhin/ansible-role-jira/compare/v1.3.0...v2.0.0) (2024-08-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename `jira_root_path` variable
+
+### Fixes
+
+* rename `jira_root_path` variable ([4fddb6d](https://github.com/antmelekhin/ansible-role-jira/commit/4fddb6d322da05840f8360700119fb85222b3a95))
+
 ## [1.3.0](https://github.com/antmelekhin/ansible-role-jira/compare/v1.2.2...v1.3.0) (2024-08-14)
 
 
