@@ -11,7 +11,7 @@ jira_user: 'jira'
 jira_group: '{{ jira_user }}'
 
 # The Jira directories
-jira_root_path: '/opt/atlassian/jira'
+jira_install_path: '/opt/atlassian/jira'
 jira_home_path: '/var/atlassian/application-data/jira'
 
 # The Jira environment configuration

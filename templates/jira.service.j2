@@ -7,9 +7,9 @@ After=network.target
 [Service]
 Type=forking
 User={{ jira_user }}
-PIDFile={{ _jira_application_path }}/work/catalina.pid
-ExecStart={{ _jira_application_path }}/bin/start-jira.sh
-ExecStop={{ _jira_application_path }}/bin/stop-jira.sh
+PIDFile={{ __jira_root_path }}/work/catalina.pid
+ExecStart={{ __jira_root_path }}/bin/start-jira.sh
+ExecStop={{ __jira_root_path }}/bin/stop-jira.sh
 
 [Install]
 WantedBy=multi-user.target

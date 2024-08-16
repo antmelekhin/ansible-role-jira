@@ -42,7 +42,7 @@ argument_specs:
         type: 'str'
         description: 'System group that will be created.'
         default: '{{ jira_user }}'
-      jira_root_path:
+      jira_install_path:
         type: 'path'
         description: 'The Jira installation directory.'
         default: '/opt/atlassian/jira'

@@ -3,6 +3,11 @@ Jira
 
 An Ansible role to install, configure and update [Jira](https://www.atlassian.com/ru/software/jira).
 
+Upgrade to 2.x
+--------------
+
+In version 2.0.0, the `jira_root_path` variable was renamed to `jira_install_path`.
+
 Requirements
 ------------
 

@@ -1,3 +1,2 @@
 ---
-_jira_install_path: '{{ jira_root_path }}/{{ jira_version }}'
-_jira_application_path: '{{ jira_root_path }}/current'
+__jira_root_path: '{{ jira_install_path }}/current'

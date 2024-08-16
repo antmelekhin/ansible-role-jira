@@ -34,7 +34,7 @@
         state: 'directory'
         mode: 0755
       loop:
-        - '{{ _jira_install_path }}'
+        - '{{ jira_install_path }}/{{ jira_version }}'
         - '{{ jira_home_path }}'
       loop_control:
         loop_var: jira_path
