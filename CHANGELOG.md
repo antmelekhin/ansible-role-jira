@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.2](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.1...v2.0.2) (2024-09-05)
+
+
+### Continuous Integration
+
+* update jira feed url ([6819cea](https://github.com/antmelekhin/ansible-role-jira/commit/6819ceaee6c68f21e9d83180337495a478e550e4))
+
+
+### Fixes
+
+* **version:** jira updated to `9.12.13` release ([#15](https://github.com/antmelekhin/ansible-role-jira/issues/15)) ([074cecc](https://github.com/antmelekhin/ansible-role-jira/commit/074ceccf6b0b9e4c6566c9785615b5b83c799330))
+
 ## [2.0.1](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.0...v2.0.1) (2024-08-17)
 
 
