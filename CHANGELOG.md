@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.3](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.2...v2.0.3) (2024-10-04)
+
+
+### Continuous Integration
+
+* use `ubuntu-24.04` instead of `ubuntu-latest` ([eaca3c9](https://github.com/antmelekhin/ansible-role-jira/commit/eaca3c90cb7d8172857b5ed7d3cdcce4e917c202))
+
+
+### Fixes
+
+* add `become: false` to localhost delegated tasks ([da32f6c](https://github.com/antmelekhin/ansible-role-jira/commit/da32f6c2bd7d28b9b81e373ff7d1820d88ca4368))
+
+
+### Styles
+
+* minor fixes ([adb456d](https://github.com/antmelekhin/ansible-role-jira/commit/adb456d7f27c0aa3d3bec0e6be157d1c90984a14))
+
 ## [2.0.2](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.1...v2.0.2) (2024-09-05)
 
 
