@@ -13,6 +13,7 @@
       jira_version not in __jira_version_check.stdout
   block:
     - name: 'Download the Jira archive to a local folder'
+      become: false
       ansible.builtin.get_url:
         url: '{{ jira_download_url }}/{{ jira_archive_name }}'
         dest: '{{ jira_download_path }}/{{ jira_archive_name }}'
