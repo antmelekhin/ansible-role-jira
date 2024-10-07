@@ -21,7 +21,7 @@
         mode: 0644
       delegate_to: localhost
 
-    - name: 'Unarchive Jira'
+    - name: 'Unarchive Jira on a target host'
       become: true
       ansible.builtin.unarchive:
         src: '{{ jira_download_path }}/{{ jira_archive_name }}'

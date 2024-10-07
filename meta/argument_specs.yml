@@ -4,8 +4,7 @@ argument_specs:
     short_description: 'Jira'
     description:
       - 'An Ansible role to install, configure and update L(Jira,https://www.atlassian.com/ru/software/jira).'
-    author:
-      - 'Melekhin Anton'
+    author: 'Melekhin Anton'
     options:
       jira_product:
         type: 'str'
