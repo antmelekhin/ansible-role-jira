@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.4](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.3...v2.0.4) (2024-10-08)
+
+
+### Continuous Integration
+
+* use `ubuntu-22.04` instead of `ubuntu-24.04` ([c95d0c3](https://github.com/antmelekhin/ansible-role-jira/commit/c95d0c38a3f9a2f4dce2d3e05d7a719ee56ab2b9))
+
+
+### Fixes
+
+* **version:** jira updated to `9.12.14` release ([#16](https://github.com/antmelekhin/ansible-role-jira/issues/16)) ([e74ba05](https://github.com/antmelekhin/ansible-role-jira/commit/e74ba05e9247e60d5f09a6475581925007c36e40))
+
+
+### Styles
+
+* minor fixes ([a5206b8](https://github.com/antmelekhin/ansible-role-jira/commit/a5206b864ac9b402a457c2f491e7a7e5057c4916))
+
 ## [2.0.3](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.2...v2.0.3) (2024-10-04)
 
 
