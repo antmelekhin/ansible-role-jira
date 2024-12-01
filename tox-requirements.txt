@@ -1,3 +1,3 @@
-ansible-lint == 6.*
-molecule == 5.*
+molecule == 24.*
 molecule-plugins[docker] == 23.*
+molecule-plugins[vagrant] == 23.*
