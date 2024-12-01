@@ -11,7 +11,7 @@ In version 2.0.0, the `jira_root_path` variable was renamed to `jira_install_pat
 Requirements
 ------------
 
-- Supported version of Ansible: 2.12 and highter.
+- Supported version of Ansible: 2.12 and higher. Systems with Python versions below than 3.7 are not compatible with ansible-core 2.17 (see [ansible/ansible#83357](https://github.com/ansible/ansible/issues/83357#issuecomment-2150254754)).
 - Supported platforms:
   - Debian
     - 10
