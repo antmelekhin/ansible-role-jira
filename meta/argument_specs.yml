@@ -16,7 +16,7 @@ argument_specs:
       jira_version:
         type: 'str'
         description: 'The version of Jira to download.'
-        default: '9.12.16'
+        default: '10.3.1'
       jira_archive_name:
         type: 'str'
         description: 'Jira archive name.'
