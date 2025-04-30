@@ -1,5 +1,6 @@
 {{ ansible_managed | comment }}
 
+#
 # If the limit of files that Jira can open is too low, it will be set to this value.
 #
 MIN_NOFILES_LIMIT={{ jira_min_nofiles_limit }}
@@ -36,11 +37,12 @@ JVM_CODE_CACHE_ARGS='-XX:InitialCodeCacheSize={{ jira_jvm_initial_code_cache_siz
 #
 # The following are the required arguments for Jira.
 #
-JVM_REQUIRED_ARGS='-Dlog4j2.contextSelector=org.apache.logging.log4j.core.selector.BasicContextSelector -Dlog4j2.disableJmx=true -Dlog4j2.garbagefree.threadContextMap=true -Dlog4j2.isWebapp=false -Djava.awt.headless=true -Datlassian.standalone=JIRA -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dmail.mime.decodeparameters=true -Dorg.dom4j.factory=com.atlassian.core.xml.InterningDocumentFactory'
+JVM_REQUIRED_ARGS='-Dlog4j2.contextSelector=org.apache.logging.log4j.core.selector.BasicContextSelector -Dlog4j2.disableJmx=true -Dlog4j2.garbagefree.threadContextMap=true -Dlog4j2.isWebapp=false -Djava.awt.headless=true -Datlassian.standalone=JIRA -Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true -Dmail.mime.decodeparameters=true -Dorg.dom4j.factory=com.atlassian.core.xml.InterningDocumentFactory -Dorg.apache.catalina.connector.RECYCLE_FACADES=false -Djavax.servlet.request.encoding=UTF8 -Dsun.jnu.encoding=UTF-8 -Dfile.encoding=UTF-8'
 
+#
 # Uncomment this setting if you want to import data without notifications
 #
-#DISABLE_NOTIFICATIONS=" -Datlassian.mail.senddisabled=true -Datlassian.mail.fetchdisabled=true -Datlassian.mail.popdisabled=true"
+# DISABLE_NOTIFICATIONS='-Datlassian.mail.senddisabled=true -Datlassian.mail.fetchdisabled=true -Datlassian.mail.popdisabled=true'
 
 
 #-----------------------------------------------------------------------------------
@@ -71,27 +73,37 @@ if [ "$JIRA_HOME" != "" ]; then
       echo "  WARNING : You cannot have a JIRA_HOME environment variable set with spaces in it. This variable is being ignored  "
       echo "--------------------------------------------------------------------------------------------------------------------"
     else
-    JIRA_HOME_MINUSD=-Djira.home=$JIRA_HOME
+      JIRA_HOME_MINUSD=-Djira.home=$JIRA_HOME
     fi
 fi
 
 # DO NOT remove the following line
 # !INSTALLER SET JAVA_HOME
 
-JAVA_OPTS="-Xms${JVM_MINIMUM_MEMORY} -Xmx${JVM_MAXIMUM_MEMORY} ${JVM_CODE_CACHE_ARGS} ${JAVA_OPTS} ${JVM_REQUIRED_ARGS} ${DISABLE_NOTIFICATIONS} ${JVM_SUPPORT_RECOMMENDED_ARGS} ${JVM_EXTRA_ARGS} ${JIRA_HOME_MINUSD} ${START_JIRA_JAVA_OPTS}"
+# Taking into account Order of JAVA_OPTS and CATALINA_OPTS in startup:
+#
+# We can set JVM Xms 2 times:
+#  - generic, for Tomcat only through JAVA_OPTS for stop-jira.sh script purposes that doesn't use CATALINA_OPTS
+#  - specific for Jira, one more time through CATALINA_OPTS for Jira JVM memory that overrides JAVA_OPTS
+#
+# This is to prevent jira stop process from consuming all of the xms memory intended for Jira to use at runtime which
+# has led to OutOfMemoryError during Jira shutdown in some cases.
+#
+# The default jvm values for Xms and Xmx should allow Jira to stop in virtually all cases. If you continue to experience
+# OutOfMemoryError during Jira shutdown, you can change the Xms and Xmx values by uncommenting the next line
 
-j_ver=`echo "$($JAVA_HOME/bin/java -version 2>&1)" | grep "version" | awk '{ print substr($3, 2, length($3)-2); }'`
-IFS='.' read -a j_ver_parts <<< "$j_ver"
+# TOMCAT_JVM_OPTS='-Xms512m -Xmx512m'
 
-if [[ ${j_ver_parts[0]} = 17 ]]; then
-  JVM_OPENS=$(cat $PRGDIR/java-opens.txt)
-  JAVA_OPTS="$JVM_OPENS $JAVA_OPTS"
-fi
+JAVA_OPTS="${JAVA_OPTS} ${TOMCAT_JVM_OPTS} ${JVM_CODE_CACHE_ARGS} ${JVM_REQUIRED_ARGS} ${DISABLE_NOTIFICATIONS} ${JVM_SUPPORT_RECOMMENDED_ARGS} ${JVM_EXTRA_ARGS} ${JIRA_HOME_MINUSD} ${START_JIRA_JAVA_OPTS}"
 
 export JAVA_OPTS
 
+CATALINA_OPTS="-Xms${JVM_MINIMUM_MEMORY} -Xmx${JVM_MAXIMUM_MEMORY} ${CATALINA_OPTS}"
+
+export CATALINA_OPTS
+
 echo ""
-echo "If you encounter issues starting or stopping Jira, please see the Troubleshooting guide at https://docs.atlassian.com/jira/jadm-docs-0912/Troubleshooting+installation"
+echo "If you encounter issues starting or stopping Jira, please see the Troubleshooting guide at https://docs.atlassian.com/jira/jadm-docs-103/Troubleshooting+installation"
 echo ""
 if [ "$JIRA_HOME_MINUSD" != "" ]; then
     echo "Using JIRA_HOME:       $JIRA_HOME"
