@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.13](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.12...v2.0.13) (2025-05-09)
+
+
+### Fixes
+
+* add cache_valid_time ([c4813db](https://github.com/antmelekhin/ansible-role-jira/commit/c4813dba062eac509267eaa8093feee51fb55ee9))
+
 ## [2.0.12](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.11...v2.0.12) (2025-04-30)
 
 
