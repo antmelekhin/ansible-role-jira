@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.21](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.20...v2.0.21) (2025-11-11)
+
+
+### Fixes
+
+* **version:** jira updated to `10.3.13` release ([#31](https://github.com/antmelekhin/ansible-role-jira/issues/31)) ([84ace8e](https://github.com/antmelekhin/ansible-role-jira/commit/84ace8e56244ddb1aad2b3f06a4e4eab19b46080))
+
 ## [2.0.20](https://github.com/antmelekhin/ansible-role-jira/compare/v2.0.19...v2.0.20) (2025-10-07)
 
 
