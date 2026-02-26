@@ -8,6 +8,8 @@
 
   roles:
     - role: antmelekhin.java
+      java_major_version: '21'
+
     - role: geerlingguy.postgresql
       postgresql_users:
         - name: '{{ db_username }}'
@@ -19,6 +21,7 @@
           encoding: 'UTF-8'
           template: 'template0'
           owner: '{{ db_username }}'
+
     - role: antmelekhin.jira
       jira_db_configuration: true
       jira_db_host: 'localhost'
