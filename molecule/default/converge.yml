@@ -3,4 +3,6 @@
   hosts: all
   roles:
     - role: antmelekhin.java
+      java_major_version: '21'
+
     - role: antmelekhin.jira
