@@ -16,7 +16,7 @@ NO_COLOR='\e[0m'
 CURRENT_VERSION="$(awk '/^.*_version:/{print $2}' 'defaults/main.yml' | tr -d \')"
 
 # Get latest version
-URL='https://my.atlassian.com/download/feeds/archived/jira-software.json'
+URL='https://my.atlassian.com/download/feeds/current/jira-software.json'
 APP_JSON="$(curl --silent $URL | sed -e 's/downloads//' -e 's/[()]//g' | jq '[ .[] | select((.edition == "Enterprise") and (.platform == "Mac OS X, Unix")) ]' | jq 'max_by(.version | split(".") | map(tonumber))')"
 LATEST_VERSION="$(echo $APP_JSON | jq -r '.version')"
 
