@@ -33,7 +33,7 @@
         owner: '{{ jira_user }}'
         group: '{{ jira_group }}'
         state: 'directory'
-        mode: 0755
+        mode: '0755'
       loop:
         - '{{ jira_install_path }}/{{ jira_version }}'
         - '{{ jira_home_path }}'
